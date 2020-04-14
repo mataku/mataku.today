@@ -1,0 +1,14 @@
+baseURL = "https://mataku.com"
+languageCode = "ja"
+title = "Club Kids Never Die"
+hasCJKLanguage = true
+theme = "hugo-notepadium"
+
+[params]
+style = "light"
+dateFormat = "Monday, January 2, 2006"
+logo = "images/site-logo.png"
+
+[params.syntax]
+use = "hljs"
+theme = "atom-one-dark"
