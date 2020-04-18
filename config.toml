@@ -1,4 +1,4 @@
-baseURL = "https://mataku.com"
+baseURL = "https://mataku.today"
 languageCode = "ja"
 title = "Club Kids Never Die"
 hasCJKLanguage = true
@@ -12,3 +12,6 @@ logo = "images/site-logo.png"
 [params.syntax]
 use = "hljs"
 theme = "atom-one-dark"
+
+[params.nav]
+showTags = true
