@@ -16,3 +16,6 @@ theme = "atom-one-dark"
 
 [params.nav]
 showTags = true
+
+[params.assets]
+css = ["css/font.css"]
