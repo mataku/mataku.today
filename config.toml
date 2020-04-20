@@ -1,5 +1,6 @@
 baseURL = "https://mataku.today"
 languageCode = "ja"
+defaultContentLanguage = "ja"
 title = "Club Kids Never Die"
 hasCJKLanguage = true
 theme = "hugo-notepadium"
