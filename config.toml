@@ -18,4 +18,4 @@ theme = "atom-one-dark"
 showTags = true
 
 [params.assets]
-css = ["css/font.css"]
+css = ["css/font.css", "css/container.css"]
