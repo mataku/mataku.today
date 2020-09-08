@@ -1,3 +1,7 @@
+body {
+  background-color: #fff;
+}
+
 .base-body {
   display: block;
   margin: -1px auto;
@@ -5,4 +9,21 @@
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   overflow: hidden;
+}
+
+.article-container iframe {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.hoge {
+  padding-top: 30px;
+  margin-top: 20px;
+}
+
+.note.list .item,
+.article-container {
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.12);
 }
