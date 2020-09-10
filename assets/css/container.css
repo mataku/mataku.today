@@ -16,14 +16,9 @@ body {
   padding-bottom: 20px;
 }
 
-.hoge {
-  padding-top: 30px;
-  margin-top: 20px;
-}
-
 .note.list .item,
 .article-container {
-  padding: 20px;
+  padding: 40px;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,.12);
 }
@@ -31,4 +26,9 @@ body {
 .site.header {
   border-bottom: 0px;
   user-select: none;
+}
+
+.twitter-tweet {
+  display: block;
+  margin: 0px auto;
 }
