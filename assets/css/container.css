@@ -1,5 +1,5 @@
 body {
-  background-color: #fff;
+  background-color: #fefefe;
 }
 
 .base-body {
@@ -16,11 +16,24 @@ body {
   padding-bottom: 20px;
 }
 
-.note.list .item,
 .article-container {
+  background-color: #fefefe;
+  box-shadow: none;
+}
+
+.article.header {
+  text-align: start;
+  margin-bottom: 32px;
+}
+
+.article.date {
+  margin-top: 16px;
+}
+
+.note.list .item {
   padding: 40px;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+  box-shadow: 0 2px 4px rgba(0,0,0,.12);
 }
 
 .site.header {
