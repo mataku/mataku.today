@@ -21,6 +21,10 @@ body {
   box-shadow: none;
 }
 
+.article.markdown-body p {
+  padding-bottom: 16px;
+}
+
 .article.header {
   text-align: start;
   margin-bottom: 32px;
