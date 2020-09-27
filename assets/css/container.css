@@ -25,6 +25,11 @@ body {
   padding-bottom: 16px;
 }
 
+.article.markdown-body blockquote {
+  background-color: #EEEEEE;
+  border-left: 6px solid #9E9E9E;
+}
+
 .article.header {
   text-align: start;
   margin-bottom: 32px;
