@@ -3,8 +3,15 @@ html {
                 Ubuntu, Roboto, Oxygen, Cantarell, 'Fira Sans', 'Droid Sans',
                 'Helvetica Neue', Helvetica, Arial, Verdana, 'Lucida Grande', 
                 sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.9;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
+@media only screen and (min-width:640px) {
+  html {
+    font-size: 18px;
+  }
+}
