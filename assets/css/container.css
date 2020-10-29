@@ -9,6 +9,8 @@ body {
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   overflow: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .article-container iframe {
