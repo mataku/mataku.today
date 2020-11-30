@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "hugo --gc --minify"
+command = "hugo --gc --minify --navigateToChanged"
 
 [context.production.environment]
 HUGO_VERSION = "0.69.0"
@@ -8,20 +8,20 @@ HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "false"
 
 [context.split1]
-command = "hugo --gc --minify"
+command = "hugo --gc --minify --navigateToChanged"
 
 [context.split1.environment]
 HUGO_VERSION = "0.69.0"
 HUGO_ENV = "production"
 
 [context.deploy-preview]
-command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
+command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL --navigateToChanged"
 
 [context.deploy-preview.environment]
 HUGO_VERSION = "0.69.0"
 
 [context.branch-deploy]
-command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
+command = "hugo --gc --minify -b $DEPLOY_PRIME_URL --navigateToChanged"
 
 [context.branch-deploy.environment]
 HUGO_VERSION = "0.69.0"
