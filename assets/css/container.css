@@ -112,7 +112,7 @@ body {
 
 @media only screen and (max-width: 640px) {
   .markdown-body .embed-caption {
-    margin-top: -16px;
+    margin-top: -4px;
   }
 }
 
@@ -122,4 +122,3 @@ body {
   padding-bottom: 0.3em;
   border-bottom: 1px solid #e6e6e6;
 }
-
