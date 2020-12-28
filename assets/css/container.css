@@ -15,7 +15,7 @@ body {
 
 .article-container iframe {
   margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
 
@@ -34,6 +34,27 @@ body {
   background-color: #EEEEEE;
   border-left: 6px solid #9E9E9E;
 }
+
+.article.markdown-body li {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.article.markdown-body li+li {
+  margin-top: 4px;
+}
+
+
+/* .article.markdown-body ul { */
+/*   margin-bottom: 4px; */
+/*   margin-block-end: 4px; */
+/*   -webkit-margin-after: 16px; */
+/*  */
+/*   padding-inline-start: 40px; */
+/*   -webkit-padding-start: 40px; */
+/*   padding-left: 40px; */
+/* } */
+
 
 .article.header {
   text-align: start;
@@ -89,3 +110,15 @@ body {
   color: #9E9E9E;
 }
 
+@media only screen and (max-width: 640px) {
+  .markdown-body .embed-caption {
+    margin-top: -16px;
+  }
+}
+
+.article.markdown-body h1,
+.article.markdown-body h2,
+.article.markdown-body h3 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #e6e6e6;
+}
