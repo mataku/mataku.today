@@ -9,6 +9,7 @@ theme = "hugo-notepadium"
 style = "light"
 dateFormat = "Monday, January 2, 2006"
 logo = "images/site-logo.png"
+mainSections = ["2021", "2020"]
 
 [params.syntax]
 use = "hljs"
