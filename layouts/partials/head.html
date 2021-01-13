@@ -20,5 +20,6 @@
 
 {{- block "title" . -}}{{- end -}}
 {{- partial "style.html" . -}}
+{{- partial "rss-feed.html" . -}}
 {{- partial "head-extra.html" . -}}
-{{ template "_internal/opengraph.html" . }}
+{{- partial "opengraph.html" . -}}
