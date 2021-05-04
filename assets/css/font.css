@@ -15,3 +15,15 @@ html {
     padding-right: 16px;
   }
 }
+
+.note.content {
+  padding-top: 4px;
+  font-size: 13px;
+}
+
+@media only screen and (min-width:640px) {
+  .note.content {
+    padding-top: 4px;
+    font-size: 14px;
+  }
+}

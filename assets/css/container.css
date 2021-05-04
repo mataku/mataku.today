@@ -1,5 +1,31 @@
-body {
-  background-color: #fefefe;
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fefefe;
+  }
+
+  .article-container {
+    background-color: #fefefe;
+    box-shadow: none;
+  }
+
+  .article.markdown-body blockquote {
+    background-color: #EEEEEE;
+    border-left: 6px solid #9E9E9E;
+  }
+
+  .tag {
+    color: #c41a16;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .tag {
+    color: #cddc39;
+  }
+
+  .article-container {
+    background-color: #222831;
+  }
 }
 
 .base-body {
@@ -22,8 +48,22 @@ body {
 }
 
 .article-container {
-  background-color: #fefefe;
   box-shadow: none;
+  padding: 24px;
+}
+
+
+@media only screen and (min-width:640px) {
+  .article-container {
+    box-shadow: none;
+    padding: 32px;
+  }
+
+  .note.list .item {
+    padding: 32px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+  }
 }
 
 .article.markdown-body p {
@@ -31,7 +71,6 @@ body {
 }
 
 .article.markdown-body blockquote {
-  background-color: #EEEEEE;
   border-left: 6px solid #9E9E9E;
 }
 
@@ -45,20 +84,13 @@ body {
 }
 
 
-/* .article.markdown-body ul { */
-/*   margin-bottom: 4px; */
-/*   margin-block-end: 4px; */
-/*   -webkit-margin-after: 16px; */
-/*  */
-/*   padding-inline-start: 40px; */
-/*   -webkit-padding-start: 40px; */
-/*   padding-left: 40px; */
-/* } */
-
-
 .article.header {
   text-align: start;
   margin-bottom: 32px;
+}
+
+.article.title {
+  font-size: 20px;
 }
 
 .article.date {
@@ -66,7 +98,7 @@ body {
 }
 
 .note.list .item {
-  padding: 40px;
+  padding: 24px;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0,0,0,.12);
 }
