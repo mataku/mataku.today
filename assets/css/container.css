@@ -1,5 +1,17 @@
-body {
-  background-color: #fefefe;
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fefefe;
+  }
+
+  .article-container {
+    background-color: #fefefe;
+    box-shadow: none;
+  }
+
+  .article.markdown-body blockquote {
+    background-color: #EEEEEE;
+    border-left: 6px solid #9E9E9E;
+  }
 }
 
 .base-body {
@@ -22,7 +34,6 @@ body {
 }
 
 .article-container {
-  background-color: #fefefe;
   box-shadow: none;
 }
 
@@ -31,7 +42,6 @@ body {
 }
 
 .article.markdown-body blockquote {
-  background-color: #EEEEEE;
   border-left: 6px solid #9E9E9E;
 }
 
@@ -43,17 +53,6 @@ body {
 .article.markdown-body li+li {
   margin-top: 4px;
 }
-
-
-/* .article.markdown-body ul { */
-/*   margin-bottom: 4px; */
-/*   margin-block-end: 4px; */
-/*   -webkit-margin-after: 16px; */
-/*  */
-/*   padding-inline-start: 40px; */
-/*   -webkit-padding-start: 40px; */
-/*   padding-left: 40px; */
-/* } */
 
 
 .article.header {
