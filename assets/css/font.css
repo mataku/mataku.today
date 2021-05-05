@@ -11,8 +11,6 @@ html {
 @media only screen and (min-width:640px) {
   html {
     font-size: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 }
 
