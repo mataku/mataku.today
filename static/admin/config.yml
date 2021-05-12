@@ -8,6 +8,9 @@ collections:
     label: 'Blog'
     folder: 'content/'
     create: true
+    path: '{{year}}/{{month}}/{{day}}'
+    preview_path: '{{year}}/{{month}}/{{day}}/'
+    slug: '{{year}}/{{month}}/{{day}}/index'
     editor:
       preview: true
     fields:
