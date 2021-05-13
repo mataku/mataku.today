@@ -14,7 +14,34 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime', date_format: "YYYY-MM-DD", time_format: "HH:MM" }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Tags', name: 'tags', widget: 'list', default: ['日常'] }
+      - {
+          label: 'Title',
+          name: 'title',
+          widget: 'string',
+          default: 'YYYY/MM/DD'
+        }
+      - {
+          label: 'Publish Date',
+          name: 'date',
+          widget: 'datetime',
+          date_format: "YYYY-MM-DD",
+          time_format: "HH:MM",
+          format: "ddd, MMM DD, YYYY"
+      }
+      - {
+          label: 'Body',
+          name: 'body',
+          widget: 'markdown'
+        }
+      - {
+          label: 'Tags',
+          name: 'tags',
+          widget: 'list',
+          default: ['日常']
+        }
+      - {
+          label: 'Draft',
+          name: 'draft',
+          widget: 'boolean',
+          default: false
+        }
