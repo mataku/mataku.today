@@ -3,18 +3,18 @@ backend:
   branch: develop
 media_folder: static/images
 public_folder: /public
+local_backend: true
 collections:
   - name: 'blog'
     label: 'Blog'
     folder: 'content/'
     create: true
-    path: '{{year}}/{{month}}/{{day}}'
     preview_path: '{{year}}/{{month}}/{{day}}/'
     slug: '{{year}}/{{month}}/{{day}}/index'
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Title1', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Tags', name: 'tags', widget: 'list' }
