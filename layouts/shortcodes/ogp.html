@@ -1,0 +1,41 @@
+{{ $url := .Get 0 }}
+
+{{ $ogpApiEndpoint := getenv "OGP_API_ENDPOINT" }}
+{{ $jsonData := getJSON $ogpApiEndpoint $url }}
+{{ $siteName := $jsonData.siteName }}
+{{ $title := $jsonData.title }}
+{{ $description := $jsonData.description }}
+{{ $image := $jsonData.image }}
+{{ $urlInfo := urls.Parse $url }}
+{{ $host := printf "%s://%s" $urlInfo.Scheme $urlInfo.Host }}
+{{ $prefix := "https://www.google.com/s2/favicons?domain=" }}
+{{ $favicon := printf "%s%s" $prefix $urlInfo.Host }}
+
+<div class="ogp-embed">
+  <div class="ogp-content">
+    <div class="thumb-wrapper">
+      <a href="{{ $url }}" target="_blank">
+        <img src="{{ $image }}" class="thumb">
+      </a>
+    </div>
+
+    <div class="body-wrapper">
+      <h2 class="title">
+        <a href="{{ $url }}" target="_blank">
+          {{ $title }}
+        </a>
+      </h2>
+
+      <div class="content">
+        {{ $description }}
+      </div>
+    </div>
+  </div>
+  
+  <div class="ogp-footer">
+    <a href="{{ $host }}" target="_blank">
+      <img src="{{ $favicon }}" alt="" title="{{ $title }}" class="favicon">
+        {{ $host }}
+    </a>
+  </div>
+</div>

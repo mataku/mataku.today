@@ -1,0 +1,70 @@
+.ogp-embed {
+  height: 144px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.ogp-embed .ogp-content {
+  height: 96px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ogp-embed .ogp-content .thumb-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+}
+
+.ogp-embed .ogp-content .thumb-wrapper .thumb {
+  width: auto;
+  max-width: 200%;
+  height:96px;
+  border: none;
+  display: block;
+  position: relative;
+}
+
+.ogp-embed .ogp-content .body-wrapper {
+  margin-right: 110px;
+}
+
+.ogp-embed .ogp-content .body-wrapper .title {
+  font-size: 17px;
+  margin: 0px 0px 2px;
+  line-height: 1.6;
+  max-height: 48px;
+  overflow: hidden;
+  border: none;
+  padding: 0px;
+}
+
+.ogp-embed .ogp-content .body-wrapper .content {
+  line-height: 1.4;
+  font-size: 12px;
+  max-height: 72px;
+  overflow: hidden;
+  border: none;
+  padding-bottom: 0px;
+}
+
+.ogp-embed .ogp-footer {
+  margin-top: 8px;
+  height: 14px;
+  position: relative;
+  font-size: 11px;
+}
+
+.ogp-embed .ogp-footer img.favicon {
+  display: inline;
+  vertical-align: middle;
+  border: none;
+}
+
+.ogp-embed .ogp-footer img {
+  box-shadow: none;
+}
