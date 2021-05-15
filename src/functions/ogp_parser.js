@@ -1,5 +1,6 @@
-exports.handler = (event, context, callback) => {
+// Reference: https://blog.a-1.dev/post/2019-04-20-blog-card/
 
+exports.handler = (event, context, callback) => {
   if ('url' in event.queryStringParameters === false) {
     return;
   }
@@ -7,27 +8,26 @@ exports.handler = (event, context, callback) => {
   const url = event.queryStringParameters.url;
   const parser = require("ogp-parser");
   parser(encodeURI(url), true).then(function(data) {
-    console.log(data);
     if (!data.hasOwnProperty('title')) {
-        console.error("Error getting ogp data: no ogpData returned");
-        return res.json({ error: "no ogpData returned" });
+      console.error("Error getting ogp data: no ogpData returned");
+      return res.json({ error: "no ogpData returned" });
     } 
     let ogpData = {};
     ogpData['siteName'] = data.title;
     for (let prop in data.ogp) {
-        if (/^og:/g.test(prop)) {
-            // Avoid overriding value, e.g. use og:image, not og:image:height
-            if (prop.split(':')[2] === undefined) {
-              ogpData[prop.split(':')[1]] = data.ogp[prop][0];
-            }
+      if (/^og:/g.test(prop)) {
+        // Avoid overriding value, e.g. use og:image, not og:image:height
+        if (prop.split(':')[2] === undefined) {
+          ogpData[prop.split(':')[1]] = data.ogp[prop][0];
         }
+      }
     }
     for (let prop in data.seo) {
       if (/^og:/g.test(prop)) {
-          // Avoid overriding value, e.g. use og:image, not og:image:height
-          if (prop.split(':')[2] === undefined) {
-            ogpData[prop.split(':')[1]] = data.seo[prop][0];
-          }
+        // Avoid overriding value, e.g. use og:image, not og:image:height
+        if (prop.split(':')[2] === undefined) {
+          ogpData[prop.split(':')[1]] = data.seo[prop][0];
+        }
       }
     }
     console.log(JSON.stringify(ogpData));
