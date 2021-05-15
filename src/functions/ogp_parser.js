@@ -1,7 +1,6 @@
 exports.handler = (event, context, callback) => {
 
   if ('url' in event.queryStringParameters === false) {
-    console.error("parameter 'url' is necessary!!");
     return;
   }
 
@@ -17,12 +16,18 @@ exports.handler = (event, context, callback) => {
     ogpData['siteName'] = data.title;
     for (let prop in data.ogp) {
         if (/^og:/g.test(prop)) {
-            ogpData[prop.split(':')[1]] = data.ogp[prop][0];
+            // Avoid overriding value, e.g. use og:image, not og:image:height
+            if (prop.split(':')[2] === undefined) {
+              ogpData[prop.split(':')[1]] = data.ogp[prop][0];
+            }
         }
     }
     for (let prop in data.seo) {
       if (/^og:/g.test(prop)) {
-          ogpData[prop.split(':')[1]] = data.seo[prop][0];
+          // Avoid overriding value, e.g. use og:image, not og:image:height
+          if (prop.split(':')[2] === undefined) {
+            ogpData[prop.split(':')[1]] = data.seo[prop][0];
+          }
       }
     }
     console.log(JSON.stringify(ogpData));
