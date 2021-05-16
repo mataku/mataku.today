@@ -17,4 +17,6 @@ jobs:
           hugo-version: '0.83.1'
 
       - name: Build
+        env:
+          OGP_API_ENDPOINT: ${{ secrets.OGP_API_ENDPOINT }}
         run: hugo --minify --gc
