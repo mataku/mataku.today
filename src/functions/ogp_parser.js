@@ -9,8 +9,11 @@ exports.handler = (event, context, callback) => {
   const parser = require("ogp-parser");
   parser(encodeURI(url), true).then(function(data) {
     if (!data.hasOwnProperty('title')) {
-      console.error("Error getting ogp data: no ogpData returned");
-      return res.json({ error: "no ogpData returned" });
+      
+      if (process.env.HUGO_ENV !== "production") {
+        console.error("Error getting ogp data: no ogpData returned");
+      }
+      return JSON.stringify({});
     } 
     let ogpData = {};
     ogpData['siteName'] = data.title;
@@ -30,14 +33,24 @@ exports.handler = (event, context, callback) => {
         }
       }
     }
-    console.log(JSON.stringify(ogpData));
+
+    if (process.env.HUGO_ENV !== "production") {
+      console.log(JSON.stringify(ogpData));
+    }
     callback(null, {
       statusCode: 200,
       "headers": { "Content-Type": "application/json; charset=utf-8"},
       body: JSON.stringify(ogpData)
     });
   }).catch(function(error) {
-      console.error(error);
+      if (process.env.HUGO_ENV !== "production") {
+        console.error(error);
+      }
+      callback(null, {  
+        statusCode: 200,
+        "headers": { "Content-Type": "application/json; charset=utf-8"},
+        body: JSON.stringify({})
+      });
   });
 
 };
