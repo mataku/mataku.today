@@ -8,7 +8,7 @@ theme = "hugo-notepadium"
 [params]
 style = "auto"
 dateFormat = "Monday, January 2, 2006"
-logo = "images/site-logo.png"
+logo = "images/logo.webp"
 mainSections = ["2021", "2020"]
 
 [params.syntax]
