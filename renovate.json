@@ -15,5 +15,12 @@
       "depNameTemplate": "gohugoio/hugo",
       "datasourceTemplate": "github-releases"
     }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "enabled": false
+    }
   ]
 }
