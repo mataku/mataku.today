@@ -1,4 +1,4 @@
 #!/bin/bash -ex
-OGP_API_ENDPOINT="http://localhost:9000/.netlify/functions/ogp_parser?url=" hugo server -D &
 npx netlify-cms-proxy-server &
 npm run build && npm run serve &
+OGP_API_ENDPOINT="http://localhost:9000/.netlify/functions/ogp_parser?url=" hugo server -D &
