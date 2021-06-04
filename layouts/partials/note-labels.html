@@ -1,0 +1,18 @@
+{{- if or .Params.categories .Params.tags -}}
+    <p class="note labels">
+        {{- range .Params.categories -}}
+            {{- $url := print "/categories/" ((replace . "#" "%23") | urlize) "/" -}}
+            <a class="category" href="{{- $url | relLangURL -}}">{{- . -}}</a>
+        {{- end -}}
+        {{- range .Params.tags -}}
+            {{- $url := print "/tags/" ((replace . "#" "%23") | urlize) "/" -}}
+            {{- if eq . "乃木坂46" -}}
+            <a class="tag nogi" href={{- $url | relLangURL -}}>{{- . -}}</a>
+            {{- else if eq . "日向坂46" -}}
+            <a class="tag hinata" href={{- $url | relLangURL -}}>{{- . -}}</a>
+            {{- else -}}
+            <a class="tag" href={{- $url | relLangURL -}}>{{- . -}}</a>
+            {{- end -}}
+        {{- end -}}
+    </p>
+{{- end -}}

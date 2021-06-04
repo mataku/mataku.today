@@ -52,6 +52,14 @@
   padding: 24px;
 }
 
+.tag.nogi {
+  color: #812990;
+}
+
+.tag.hinata {
+  color: #7cc7e8;
+}
+
 
 @media only screen and (min-width:640px) {
   .article-container {
