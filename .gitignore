@@ -1,4 +1,4 @@
-public
-resources/_gen/
-node_modules
+/public
+/resources/_gen/
+/node_modules
 /functions/
