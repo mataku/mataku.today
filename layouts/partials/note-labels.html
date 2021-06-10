@@ -10,6 +10,10 @@
             <a class="tag nogi" href={{- $url | relLangURL -}}>{{- . -}}</a>
             {{- else if eq . "日向坂46" -}}
             <a class="tag hinata" href={{- $url | relLangURL -}}>{{- . -}}</a>
+            {{- else if eq . "櫻坂46" -}}
+            <a class="tag sakura" href={{- $url | relLangURL -}}>{{- . -}}</a>
+            {{- else if eq . "欅坂46" -}}
+            <a class="tag keyaki" href={{- $url | relLangURL -}}>{{- . -}}</a>
             {{- else -}}
             <a class="tag" href={{- $url | relLangURL -}}>{{- . -}}</a>
             {{- end -}}
