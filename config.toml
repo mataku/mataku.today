@@ -26,3 +26,6 @@ home = [ "HTML", "RSS" ]
 
 [outputFormats.RSS]
 baseName = "feed"
+
+[services.rss]
+limit = 10
