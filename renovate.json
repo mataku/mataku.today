@@ -11,7 +11,7 @@
     },
     {
       "fileMatch": ["^.github/workflows/build.yml$"],
-      "matchStrings": [".*hugo-version: '(?<currentValue>.*?)'\n"],
+      "matchStrings": [".*hugo-version: 'v(?<currentValue>.*?)'\n"],
       "depNameTemplate": "gohugoio/hugo",
       "datasourceTemplate": "github-releases"
     }
