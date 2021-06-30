@@ -4,7 +4,7 @@ command = "npm run build && hugo --gc --minify"
 functions = "./functions"
 
 [context.production.environment]
-HUGO_VERSION = "v0.84.1"
+HUGO_VERSION = "v0.84.3"
 HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "false"
 
@@ -12,20 +12,20 @@ HUGO_ENABLEGITINFO = "false"
 command = "hugo --gc --minify"
 
 [context.split1.environment]
-HUGO_VERSION = "v0.84.1"
+HUGO_VERSION = "v0.84.3"
 HUGO_ENV = "production"
 
 [context.deploy-preview]
 command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "v0.84.1"
+HUGO_VERSION = "v0.84.3"
 
 [context.branch-deploy]
 command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy.environment]
-HUGO_VERSION = "v0.84.1"
+HUGO_VERSION = "v0.84.3"
 
 [context.next.environment]
 HUGO_ENABLEGITINFO = "false"
