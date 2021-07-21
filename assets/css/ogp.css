@@ -68,3 +68,11 @@
 .ogp-embed .ogp-footer img {
   box-shadow: none;
 }
+
+.embed {
+  text-align: center;
+}
+
+.embed .spotify {
+  max-width: 100%;
+}
