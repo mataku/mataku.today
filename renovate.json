@@ -21,6 +21,11 @@
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
       "enabled": false
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"],
+      "enabled": false
     }
   ]
 }
