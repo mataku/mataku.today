@@ -11,7 +11,7 @@
 {{- with $featured -}}
 <meta property="og:image" content="{{ $featured.Permalink }}"/>
 {{ else -}}
-<meta property="og:image" content="{{ .Site.Params.logo | absURL }}"/>
+<meta property="og:image" content="{{ .Site.Params.ogpImage | absURL }}"/>
 {{ end }}{{ end }}
 
 {{- with .Params.locale }}<meta property="og:locale" content="{{ . }}" />{{ end }}
