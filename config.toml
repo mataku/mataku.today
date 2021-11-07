@@ -4,6 +4,7 @@ defaultContentLanguage = "ja"
 title = "Club Kids Never Die"
 hasCJKLanguage = true
 theme = "hugo-notepadium"
+paginate = 30
 
 [params]
 style = "auto"
