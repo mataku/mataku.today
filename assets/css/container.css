@@ -94,6 +94,11 @@
     /* margin-left: -16px; */
     /* margin-right: -16px; */
   }
+
+  .article-container {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }
 
 
