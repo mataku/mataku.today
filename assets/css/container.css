@@ -35,8 +35,6 @@
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   overflow: hidden;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .article-container iframe {
@@ -49,7 +47,8 @@
 
 .article-container {
   box-shadow: none;
-  padding: 24px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .tag.nogi {
@@ -68,11 +67,14 @@
   color: #5eb954;
 }
 
+.site.name {
+  font-size: 20px;
+}
+
 
 @media only screen and (min-width:640px) {
   .article-container {
     box-shadow: none;
-    padding: 32px;
   }
 
   .note.list .item {

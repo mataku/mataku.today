@@ -9,7 +9,7 @@ paginate = 30
 [params]
 style = "auto"
 dateFormat = "Monday, January 2, 2006"
-logo = "images/logo.webp"
+logo = ""
 ogpImage = "images/ogp.jpg"
 mainSections = ["2021", "2020"]
 
