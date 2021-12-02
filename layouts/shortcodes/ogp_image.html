@@ -1,0 +1,7 @@
+{{ $url := .Get 0 }}
+
+{{ $ogpApiEndpoint := getenv "OGP_API_ENDPOINT" }}
+{{ $jsonData := getJSON $ogpApiEndpoint $url }}
+{{ $image := $jsonData.image }}
+
+<img src="{{ $image }}" />
