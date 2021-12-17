@@ -1,0 +1,35 @@
+baseURL: 'https://mataku.today/'
+languageCode: ja
+defaultContentLanguage: ja
+title: Club Kids Never Die
+hasCJKLanguage: true
+theme: hugo-notepadium
+paginate: 30
+params:
+  style: auto
+  dateFormat: 'Monday, January 2, 2006'
+  logo: ''
+  ogpImage: images/ogp.jpg
+  mainSections:
+    - '2021'
+    - '2020'
+  syntax:
+    use: hljs
+    theme: atom-one-dark
+  nav:
+    showTags: true
+  assets:
+    css:
+      - css/font.css
+      - css/container.css
+      - css/ogp.css
+outputs:
+  home:
+    - HTML
+    - RSS
+outputFormats:
+  RSS:
+    baseName: feed
+services:
+  rss:
+    limit: 10
