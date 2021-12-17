@@ -33,3 +33,8 @@ outputFormats:
 services:
   rss:
     limit: 10
+security:
+  funcs:
+    getenv:
+    - ^HUGO_
+    - OGP_API_ENDPOINT

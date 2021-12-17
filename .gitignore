@@ -3,3 +3,4 @@
 /node_modules
 /functions/
 /.DS_Store
+.hugo_build.lock
