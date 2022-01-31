@@ -7,7 +7,7 @@ tags:
   - にこるん
 ---
 
-{{< twitter 1367842684673564673 >}}
+{{< tweet user="0220nicole" id="1367842684673564673" >}}
 
 {{< vertical_space >}}
 
