@@ -1,6 +1,13 @@
 name: 'Build'
 
-on: [push]
+on:
+  push:
+    branches:
+      - '**'
+
+concurrency:
+  group: develop
+  cancel-in-progress: true
 
 jobs:
   build:
