@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "netlify-cms-proxy-server": "1.3.20",
-    "netlify-lambda": "2.0.14"
+    "netlify-cms-proxy-server": "1.3.24",
+    "netlify-lambda": "2.0.15"
   },
   "dependencies": {
     "ogp-parser": "0.6.0"
