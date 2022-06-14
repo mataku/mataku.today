@@ -1,5 +1,5 @@
 ## Development
 
 ```shell
-./bin/serve
+make serve
 ```
