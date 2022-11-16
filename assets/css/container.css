@@ -112,6 +112,7 @@
 
 .article.markdown-body p {
   padding-bottom: 1px;
+  letter-spacing: 0.015em;
 }
 
 .article.markdown-body blockquote {
