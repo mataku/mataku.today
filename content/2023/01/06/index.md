@@ -13,7 +13,7 @@ Jetpack Compose で横スワイプで画像切り替えのような、カルー�
 
 {{< vertical_space >}}
 
-{{< figure src="./horizontal_pager.gif" title="動作サンプル (ポジションの遷移付き)" width=50% >}}
+{{< figure src="./horizontal_pager.gif" title="3 つの要素を持つリストによる動作サンプル (ポジションの遷移付き)" width=50% >}}
 
 
 
