@@ -13,5 +13,5 @@ Compose の Text component でもかつての `android:ellipsize="middle"` が�
 
 UI component だから久しぶりに androidTest 書くかと思い、初めて composable component のテストを書いたのも良かった。Acrivity や Fragment を意識しなくても screen のテストができるので、Android API で困ることが減る。作り上 Fragment で ComposeView を用いてラップしていたとしても、何らかの state holder を用いて stateless composable になっていれば、テストする際は親の Fragment 経由で起動しなくても十分なはず。Gradle Managed Devices でテストする端末をコードで管理するのも良かった。ライブラリのテストくらいなら少なくとも有用だし、アプリケーションレベルでは並列実行して安定するかや Robolectric を用いて実行した上で判断できると思う。
 
-公式のテストに関するページ見たらすぐ書き始められるのは良かった。あとはお使いの CI のハードウェア次第。
+公式のテストに関するページ見たらすぐ書き始められるのも良かった。あとはお使いの CI のハードウェア次第。
 https://developer.android.com/jetpack/compose/testing
