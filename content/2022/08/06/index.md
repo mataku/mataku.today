@@ -1,5 +1,5 @@
 ---
-title: "Shared element transition in Compose わからん"
+title: "2022/08/06"
 date: 2022-08-06T20:38:44+09:00
 draft: false
 tags:
