@@ -1,0 +1,12 @@
+<section id="footer" class="footer">
+    {{- $copyright := site.Copyright -}}
+    {{- if not $copyright -}}
+        {{- $copyright = site.Title | safeHTML -}}
+    {{- end -}}
+    {{- $latestYear := now.Year -}}
+    {{- partial "copyright.html" (dict "copyright" ($copyright | safeHTML) "latestYear" $latestYear) -}}
+</section>
+{{- partial "math.html" . -}}
+{{- partial "syntax.html" . -}}
+{{- template "_internal/google_analytics_async.html" . -}}
+{{- partial "custom-js.html" . -}}
