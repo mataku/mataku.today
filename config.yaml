@@ -5,6 +5,8 @@ title: Club Kids Never Die
 hasCJKLanguage: true
 theme: hugo-notepadium
 paginate: 30
+ignoreErrors: 
+  - "error-remote-getjson"
 params:
   style: auto
   dateFormat: 'Monday, January 2, 2006'
