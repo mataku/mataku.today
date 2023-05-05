@@ -1,5 +1,5 @@
 ---
-title: "{{ dateFormat "2006/01/02" .Date }}"
+title: {{ dateFormat "2006/01/02" .Date }}
 date: {{ .Date }}
 draft: false
 tags:
