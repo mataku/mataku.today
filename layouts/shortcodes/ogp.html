@@ -5,7 +5,7 @@
 {{ $siteName := $jsonData.siteName }}
 {{ $title := $jsonData.title }}
 {{ $description := $jsonData.description }}
-{{ $image := $jsonData.image }}
+{{ $image := $jsonData.imageUrl }}
 {{ $urlInfo := urls.Parse $url }}
 {{ $host := printf "%s://%s" $urlInfo.Scheme $urlInfo.Host }}
 {{ $prefix := "https://www.google.com/s2/favicons?domain=" }}
