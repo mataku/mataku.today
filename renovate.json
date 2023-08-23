@@ -4,12 +4,6 @@
   ],
   "regexManagers": [
     {
-      "fileMatch": ["^netlify.toml$"],
-      "matchStrings": ["HUGO_VERSION = \"(?<currentValue>.*?)\"\n"],
-      "depNameTemplate": "gohugoio/hugo",
-      "datasourceTemplate": "github-releases"
-    },
-    {
       "fileMatch": ["^.github/workflows/build.yml$"],
       "matchStrings": [".*echo 'HUGO_VERSION=(?<currentValue>.*?)'.*\n"],
       "depNameTemplate": "gohugoio/hugo",

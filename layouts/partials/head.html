@@ -7,8 +7,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
-
 {{- define "title" -}}
     {{- $title := .Title -}}
     {{- if and (ne $title "") (ne $title site.Title) -}}
