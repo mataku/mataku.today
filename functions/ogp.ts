@@ -37,7 +37,6 @@ class OGPData {
 
 
 export const onRequest: PagesFunction = async (context) => {
-    console.log(context.request.url);
     const url = new URL(context.request.url);
     const params = new URLSearchParams(url.search);
     const href = decodeURIComponent(params.get("url"))
