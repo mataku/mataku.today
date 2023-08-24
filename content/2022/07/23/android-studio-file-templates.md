@@ -1,5 +1,5 @@
 ---
-title: "Android Studio で使える file templates を作り直した"
+title: Android Studio で使える file templates を作り直した
 date: 2022-07-23T11:16:05+09:00
 draft: false
 tags:
@@ -26,7 +26,7 @@ tags:
 
 以前言及していた thagikura さんのリポジトリを見ていてどういう構成になっているか読むかと思っていたものの、プラグイン作成用にテンプレートが用意されているので、README を見ていたら大まかな理解はできた。
 
-{{< ogp "https://github.com/JetBrains/intellij-platform-plugin-template" >}}
+https://github.com/JetBrains/intellij-platform-plugin-template
 
 ### plugin.xml
 

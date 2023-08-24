@@ -8,7 +8,7 @@ tags:
 
 そういえばお願いが来ていたので色々と思い出しながら対応していた。
 
-{{< ogp "https://github.com/mataku/danger-ktlint/issues/6" >}}
+https://github.com/mataku/danger-ktlint/issues/6
 
 - - - 
 

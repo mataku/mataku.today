@@ -17,7 +17,7 @@ Heroku で動かしていたアプリケーションを Google Cloud Run と Clo
 
 ### Cloud Run
 
-{{< ogp "https://cloud.google.com/run" >}}
+https://cloud.google.com/run
 
 Heroku Dyno からの移行先にした。Heroku ではソースコードをそのまま push して buildpack にいい感じにしてもらっていたし、Google Cloud Buildpacks にお世話になるかとも思ったけど、良い機会なのでエントリポイントもまるっと管理できるし手元でも管理が楽なのでコンテナ化した。
 
@@ -111,7 +111,7 @@ Slack slash command はタイムアウトが 3 秒で設定されており、現
 
 ### Firestore
 
-{{< ogp "https://cloud.google.com/firestore" >}}
+https://cloud.google.com/firestore
 
 Twitter bot のツイート管理と副業の記録を期限付きで保存するために利用していた Heroku Redis は Cloud Firestore に変更。Redis でないといけない理由と Memorystore for Redis のお値段を天秤にかけた結果、無料枠で収まる Firestore にした。オブジェクトを雑に突っ込んでたせいで明示的にシリアライズ / デシリアライズを考慮したり、実質 order 考慮するロジックもあったので、移行したことで無理しなくなった。
 
@@ -119,7 +119,7 @@ Twitter bot のツイート管理と副業の記録を期限付きで保存す�
 
 ### Secret Manager
 
-{{< ogp "https://cloud.google.com/secret-manager" >}}
+https://cloud.google.com/secret-manager
 
 秘匿情報のやりとりに利用。秘匿しなくて良いものは環境変数に入れた。
 
@@ -143,7 +143,7 @@ value = res.payload.data
 
 ### Cloud Scheduler
 
-{{< ogp "https://cloud.google.com/scheduler" >}}
+https://cloud.google.com/scheduler
 
 Heroku Scheduler からの移行先にした。HTTP / PubSub / AppEngine HTTP を受け付けているので、rake task でやっていた処理を Web API 化して、そのエンドポイント (Cloud Run) にリクエストするように job を作成。
 

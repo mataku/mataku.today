@@ -16,9 +16,9 @@ Google Play Instant やりましょうよーと紹介したら、”へーこん
 
 Google Play Instant に関してや、実装に当たっての制約は Android Developers 公式を見るのが早い。
 
-{{< ogp "https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle" >}}
+https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle
 
-{{< ogp "https://developer.android.com/topic/google-play-instant/overview#reduce-size" >}}
+https://developer.android.com/topic/google-play-instant/overview#reduce-size
 
 ## モジュール設計
 
@@ -44,7 +44,7 @@ AndroidManifest.xml 内で `xmlns:dist=”http://schemas.android.com/apk/distrib
 
 実は以下に示す記事のように、巨大な app module から feature module を切り出していくぞという方針で元々動いていた。
 
-{{< ogp "https://matakucom.medium.com/minne-%E3%81%A8%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-5a8c73b50096" >}}
+https://matakucom.medium.com/minne-%E3%81%A8%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-5a8c73b50096
 
 しかし、少しずつ切り出していくと 4MB というサイズの制約を達成するのが想定より先になってしまうのが大いに予想できたため、急いで app module を最小限にし、その他を legacy module として押し込んだ。
 
@@ -123,7 +123,7 @@ IDE 上でクラス参照及びプロパティ参照はできるけど、ビル�
 
 モジュールのダウンロードには Play Core ライブラリを用いるので、以下のページにお世話になった。
 
-{{< ogp "https://developer.android.com/guide/playcore#monitor_requests" >}}
+https://developer.android.com/guide/playcore#monitor_requests
 
 ### SplitInstallSessionStatus
 

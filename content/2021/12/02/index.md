@@ -9,8 +9,8 @@ tags:
   - 櫻坂46
 ---
 
-{{< ogp_image "https://open.spotify.com/wrapped-2021/share-eb7f81450c544616bce1a304c58303bf-1080x1920?si=W0o7gfEWQtiH7fRxIvSDOg&lang=ja" >}}
+https://open.spotify.com/wrapped-2021/share-eb7f81450c544616bce1a304c58303bf-1080x1920?si=W0o7gfEWQtiH7fRxIvSDOg&lang=ja
 
-{{< ogp_image "https://open.spotify.com/wrapped-2021/share-614244ff5a1f4d93b84c25ec39de78c9-1080x1920?si=odv6q7iWTyKrUYvCVmXrQA&lang=ja&artist-id=08lN7bm4Etec8ETFxaTUmq" >}}
+https://open.spotify.com/wrapped-2021/share-614244ff5a1f4d93b84c25ec39de78c9-1080x1920?si=odv6q7iWTyKrUYvCVmXrQA&lang=ja&artist-id=08lN7bm4Etec8ETFxaTUmq
 
 自分に安心した。こんな年だったなあというのを Spotify まとめでざっと見つつ、年が明けたら last.fm でもうちょい詳細を補完する流れになりそう。
