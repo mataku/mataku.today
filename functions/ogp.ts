@@ -40,6 +40,14 @@ export const onRequest: PagesFunction = async (context) => {
     const url = new URL(context.request.url);
     const params = new URLSearchParams(url.search);
     const href = decodeURIComponent(params.get("url"))
+    if (!href) {
+        return new Response("{}", {
+            headers: {
+                "content-type": "application/json;charset=UTF-8",
+            },
+        });
+    }
+
     try {
         const resource = await fetch(href);
 
