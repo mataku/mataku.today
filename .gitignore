@@ -6,3 +6,4 @@
 /build
 /.vscode
 /.node-version
+functions/wrangler.toml
