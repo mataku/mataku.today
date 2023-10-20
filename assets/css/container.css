@@ -74,6 +74,13 @@
 .tag.keyaki {
   color: #5eb954;
 }
+.tag.head {
+  font-size: 14px;
+}
+.taghead-container {
+  margin-left: 12px;
+  margin-right: 12px;
+}
 
 .site.name {
   font-size: 20px;
@@ -148,7 +155,7 @@
 }
 
 .note.list .item {
-  padding: 24px;
+  padding: 16px;
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0,0,0,.12);
 }

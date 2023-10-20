@@ -1,4 +1,10 @@
-{{- range .Site.Taxonomies.tags.ByCount }}
-  <a class="tag" href="{{ "/tags/" | relLangURL }}{{ .Term | urlize }}">#{{ .Term }}</a>
-  {{- .Count }}
-{{- end }}
+{{ if not hugo.IsProduction }}
+  {{- range .Site.Taxonomies.tags.ByCount }}
+    <a class="tag" href="{{ "/tags/" | relLangURL }}{{ .Term | urlize }}">#{{ .Term }}</a>
+    {{- .Count }}
+  {{- end }}
+{{ end }}
+
+<div class="taghead-container">
+  <a class="tag head" href="{{ "/tags/" | relLangURL }}{{ "技術" | urlize }}">#技術</a>
+</div>
