@@ -5,6 +5,7 @@ draft: false
 tags:
   - 日常
   - Android
+  - 技術
 ---
 
 有給消化第 1 弾を迎えたので、マジでわからんリストの 1 つである Jetpack Compose ノックを https://github.com/mataku/SunsetScrob でひたすらしている。LazyColumn を持つ画面から、(Lazy)Column を持つ画面へ遷移する場合に、画面がちらつかせないためにはどうすれば良いかなというのを考えていた。いわゆる何らかの Web API をリクエストして表示するリストの 1 要素をタップしたら、詳細がある画面へ遷移する (大体この画面でも Web API リクエストがある) 際のアクション。

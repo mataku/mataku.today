@@ -4,6 +4,7 @@ date: 2021-02-26T23:33:21+09:00
 draft: false
 tags:
   - Android
+  - 技術
 ---
 
 apollo-android + OkHttp を用いたリクエスト時に、アクセストークンの再取得を挟んだ上でリクエストをリトライしたい場合、その処理を ApolloInterceptor と OkHttp Interceptor のどちらにやってもらうか悩んでたけど、ApolloInterceptor にした。

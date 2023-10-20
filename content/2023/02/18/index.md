@@ -5,6 +5,7 @@ draft: false
 tags:
   - 日常
   - Android
+  - 技術
 ---
 
 Compose の Text component でもかつての `android:ellipsize="middle"` がやりたくて、[https://github.com/mataku/MiddleEllipsisText]([https://github.com/mataku/MiddleEllipsisText) を作っている。正直公式が対応しそうなもんなので息は短いだろう (該当の Google での issue に動きはないが...) と思っているものの、作らないと僕の仕事が進まないのでやるしかなかった。

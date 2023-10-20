@@ -5,6 +5,7 @@ draft: false
 tags:
   - Android
   - Firebase App Distribution
+  - 技術
 ---
 
 リリース前に動作確認したいのでアプリを配布したい、という場合に DeployGate をずっと用いていたが、Firebase が提供している Firebase App Distribution もさわり心地特に問題なかったので、どうアップロードを自動化できるかというのを調べた。

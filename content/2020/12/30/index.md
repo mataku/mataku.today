@@ -4,6 +4,7 @@ date: 2020-12-30T00:20:54+09:00
 draft: false
 tags: 
   - 仕事
+  - 技術
 ---
 
 {{< tweet user="matakucom" id="1214078848049893377" >}}

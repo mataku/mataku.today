@@ -1,9 +1,10 @@
 ---
-title: "2022/08/19"
+title: minne Android アプリ開発基盤における改善
 date: 2020-12-04T00:18:00+09:00
 draft: false
 tags:
   - Android
+  - 技術
 ---
 
 普段は minne Android アプリに関わるところでがしがし開発しているので、僕からは開発基盤における改善をお送りします。

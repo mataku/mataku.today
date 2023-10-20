@@ -5,6 +5,7 @@ draft: false
 tags:
   - Android
   - WebView
+  - 技術
 ---
 
 Android WebView 起因で問題があった際に、WebView 実装で使っているアプリケーションを取得してあれこれしたいみたいな話があり、[WebViewCompat#getCurrentWebViewPackage](https://developer.android.com/reference/androidx/webkit/WebViewCompat#getCurrentWebViewPackage(android.content.Context)) でパッケージ取得できる話をしていた。

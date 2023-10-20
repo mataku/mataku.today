@@ -5,6 +5,7 @@ draft: false
 tags:
   - 日常
   - Android
+  - 技術
 ---
 
 Jetpack Compose で横スワイプで画像切り替えのような、カルーセルで画像表示したい場合には Accompanist の HorizontalPager が便利。

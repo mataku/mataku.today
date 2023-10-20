@@ -5,6 +5,7 @@ draft: false
 tags:
   - 日常
   - Android
+  - 技術
 ---
 
 IntelliJ IDEA 2021.2 で Actions On Save という機能が追加されており、Save Actions plugin でやっていたようなファイルの保存時にコードフォーマットすることが可能になっていた。

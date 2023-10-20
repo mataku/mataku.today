@@ -4,6 +4,7 @@ date: 2019-12-30T17:35:18+09:00
 draft: false
 tags:
   - Android
+  - 技術
 ---
 
 既存のアプリを Dynamic Feature Module 化していたら、DeepLink のように Intent.ActionView にてアプリ内の画面遷移をしている部分でアプリ選択の chooser が常に表示されてしまう現象に遭遇した。Android Gradle Plugin 3.5.X で確認している。
