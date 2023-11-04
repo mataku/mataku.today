@@ -5,6 +5,7 @@ title: mataku.today
 hasCJKLanguage: true
 theme: hugo-notepadium
 paginate: 30
+enableRobotsTXT: true
 ignoreErrors: 
   - "error-remote-getjson"
 params:
