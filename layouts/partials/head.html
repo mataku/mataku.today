@@ -1,26 +1,28 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="dark light">
-<meta name="supported-color-schemes" content="dark light">
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.jpg">
-<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <meta name="supported-color-schemes" content="dark light">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.jpg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-{{- define "title" -}}
-    {{- $title := .Title -}}
-    {{- if and (ne $title "") (ne $title site.Title) -}}
-        <title>{{- $title | safeHTML -}} &nbsp;&ndash;&nbsp; {{- site.Title | safeHTML -}}</title>
-    {{- else -}}
-        {{- $slogan := site.Params.slogan -}}
-        <title>{{- site.Title | safeHTML -}}{{- if and (isset site.Params "slogan") (ne $slogan "") -}} &nbsp;&ndash;&nbsp;
-            {{- $slogan | safeHTML -}}{{- end -}}</title>
-    {{- end -}}
-{{- end -}}
+  {{- define "title" -}}
+      {{- $title := .Title -}}
+      {{- if and (ne $title "") (ne $title site.Title) -}}
+          <title>{{- $title | safeHTML -}} &nbsp;&ndash;&nbsp; {{- site.Title | safeHTML -}}</title>
+      {{- else -}}
+          {{- $slogan := site.Params.slogan -}}
+          <title>{{- site.Title | safeHTML -}}{{- if and (isset site.Params "slogan") (ne $slogan "") -}} &nbsp;&ndash;&nbsp;
+              {{- $slogan | safeHTML -}}{{- end -}}</title>
+      {{- end -}}
+  {{- end -}}
 
-{{- block "title" . -}}{{- end -}}
-{{- partial "style.html" . -}}
-{{- partial "rss-feed.html" . -}}
-{{- partial "head-extra.html" . -}}
-{{- partial "opengraph.html" . -}}
-<meta name="google-site-verification" content="6cv94iKlOEWm9L3VuXPGBXmsozBp3I_cJ-w-l-5GI8w" />
+  {{- block "title" . -}}{{- end -}}
+  {{- partial "style.html" . -}}
+  {{- partial "rss-feed.html" . -}}
+  {{- partial "head-extra.html" . -}}
+  {{- partial "opengraph.html" . -}}
+  <meta name="google-site-verification" content="6cv94iKlOEWm9L3VuXPGBXmsozBp3I_cJ-w-l-5GI8w" />
+</head>
