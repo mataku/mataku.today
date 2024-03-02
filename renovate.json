@@ -2,7 +2,7 @@
   "extends": [
     "config:base"
   ],
-  "regexManagers": [
+  "customManagers": [
     {
       "fileMatch": ["^.github/workflows/build.yml$"],
       "matchStrings": [".*echo 'HUGO_VERSION=(?<currentValue>.*?)'.*\n"],
@@ -20,6 +20,10 @@
       "matchManagers": ["npm"],
       "matchDepTypes": ["dependencies"],
       "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch", "major"],
+      "automerge": true
     }
   ]
 }
