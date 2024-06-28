@@ -4,7 +4,7 @@
         {{- $copyright = site.Title | safeHTML -}}
     {{- end -}}
     {{- $latestYear := now.Year -}}
-    {{- partial "copyright.html" (dict "copyright" ($copyright | safeHTML) "latestYear" $latestYear) -}}
+    {{- partial "copyright.html" (dict "copyright" ($copyright | safeHTML)) -}}
 </section>
 {{- partial "math.html" . -}}
 {{- partial "syntax.html" . -}}

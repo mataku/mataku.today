@@ -39,10 +39,13 @@
 .base-body {
   display: block;
   margin: -1px auto;
-  max-width: 900px;
+  max-width: 720px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   overflow: hidden;
+  word-break: break-all;
+  hyphens: manual;
+  line-break: normal;
 }
 
 .article-container iframe {
@@ -121,6 +124,10 @@
   }
 }
 
+
+.article.markdown-body {
+  line-height: 2.0;
+}
 
 .article.markdown-body p {
   padding-bottom: 1px;
