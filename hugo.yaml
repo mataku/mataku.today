@@ -4,10 +4,13 @@ defaultContentLanguage: ja
 title: mataku.today
 hasCJKLanguage: true
 theme: hugo-notepadium
-paginate: 30
 enableRobotsTXT: true
 ignoreErrors: 
   - "error-remote-getjson"
+
+pagination:
+  pagerSize: 30
+
 params:
   style: auto
   dateFormat: 'Monday, January 2, 2006'
