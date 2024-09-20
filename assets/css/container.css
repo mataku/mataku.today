@@ -177,6 +177,8 @@
 .site.header {
   border-bottom: 0px;
   user-select: none;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .twitter-tweet {
