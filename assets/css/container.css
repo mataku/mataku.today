@@ -112,6 +112,17 @@
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0,0,0,.12);
   }
+
+  .site.header {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .article-container,
+  .article.navigation {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
 
 @media only screen and (max-width:640px) {
