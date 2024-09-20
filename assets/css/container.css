@@ -46,6 +46,8 @@
   word-break: break-all;
   hyphens: manual;
   line-break: normal;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .article-container iframe {
@@ -58,8 +60,13 @@
 
 .article-container {
   box-shadow: none;
-  padding-left: 0px;
-  padding-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.article.navigation {
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .tag.nogi {
@@ -181,6 +188,8 @@
 .site.header {
   border-bottom: 0px;
   user-select: none;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .twitter-tweet {
