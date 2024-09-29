@@ -1,7 +1,8 @@
 {{ $url := .Get 0 }}
 
 {{ $ogpApiEndpoint := getenv "OGP_API_ENDPOINT" }}
-{{ $jsonData := getJSON $ogpApiEndpoint $url }}
+
+{{ $jsonData := resources.GetRemote $ogpApiEndpoint $url | transform.Unmarshal -}}
 {{ $siteName := $jsonData.siteName }}
 {{ $title := $jsonData.title }}
 {{ $description := $jsonData.description }}
