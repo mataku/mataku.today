@@ -103,6 +103,10 @@
 
 
 @media only screen and (min-width:640px) {
+  html {
+    font-size: 15px;
+  }
+
   .article-container {
     box-shadow: none;
   }
@@ -120,8 +124,8 @@
 
   .article-container,
   .article.navigation {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 
@@ -237,4 +241,8 @@
 .article.markdown-body h3 {
   padding-bottom: 0.3em;
   border-bottom: 1px solid #e6e6e6;
+}
+
+.body-details p {
+  margin-top: 24px;
 }

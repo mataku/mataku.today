@@ -48,3 +48,7 @@ security:
     getenv:
     - ^HUGO_
     - OGP_API_ENDPOINT
+markup:
+  goldmark:
+    renderer:
+      hardWraps: true
