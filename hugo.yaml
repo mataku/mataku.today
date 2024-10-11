@@ -7,7 +7,7 @@ theme: hugo-notepadium
 enableRobotsTXT: true
 ignoreErrors: 
   - "error-remote-getjson"
-
+summaryLength: 15
 pagination:
   pagerSize: 30
 
