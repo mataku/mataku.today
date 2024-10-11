@@ -11,7 +11,7 @@
                 <p class="note date">{{- .Date.Format $dateFormat -}}</p>
             {{- end -}}
             {{- if .Summary -}}
-              {{- $detailExcludedSummary := split .Summary "<details" -}}
+              {{- $detailExcludedSummary := split .Summary "details" -}}
               <p class="note content">
                   {{- if ge (len $detailExcludedSummary) 2 -}}
                     {{- index $detailExcludedSummary 0 | plainify | safeHTML -}}
