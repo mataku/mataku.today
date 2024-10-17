@@ -1,7 +1,11 @@
 name: Hook
 
 on:
-  workflow-dispatch:
+  push:
+    paths:
+      - 'content/**'
+    branches:
+      - develop
 
 concurrency:
   group: hook
@@ -11,11 +15,17 @@ jobs:
   hook:
     runs-on: ubuntu-24.04
     steps:
+      - name: Await CF Pages
+        uses: WalshyDev/cf-pages-await@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          project: ${{ secrets.CLOUDFLARE_PROJECT }}
       - uses: azu/rss-to-twitter@v2
         with:
           RSS_URL: 'https://mataku.today/feed.xml'
           TWEET_TEMPLATE: '%url%'
-          UPDATE_WITHIN_MINUTES: 15
+          UPDATE_WITHIN_MINUTES: 10
           TWITTER_APIKEY: ${{ secrets.TWITTER_API_KEY }}
           TWITTER_APIKEY_SECRET: ${{ secrets.TWITTER_API_KEY_SECRET }}
           TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
