@@ -2,6 +2,8 @@ name: Hook
 
 on:
   push:
+    paths:
+      - 'content/**'
     branches:
       - develop
 
