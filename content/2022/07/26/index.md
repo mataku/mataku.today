@@ -8,9 +8,9 @@ tags:
 
 dell の 39.7 インチ曲面モニターを買った。
 
-{{< tweet user="matakucom" id="1417909275435929604" >}}
+{{< x user="matakucom" id="1417909275435929604" >}}
 
-{{< tweet user="matakucom" id="1471017596137111552" >}}  
+{{< x user="matakucom" id="1471017596137111552" >}}  
 
 {{< vertical_space >}}
 

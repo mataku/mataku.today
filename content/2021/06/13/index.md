@@ -8,7 +8,7 @@ tags:
 
 転職して以来、社会を学んでいる。
 
-{{< tweet user="matakucom" id="1403659074638553092" >}}
+{{< x user="matakucom" id="1403659074638553092" >}}
 
 {{< vertical_space >}}
 

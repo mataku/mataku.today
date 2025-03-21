@@ -14,9 +14,9 @@ tags:
 
 今でも岡田将生さんの印象はこれ。
 
-{{< tweet user="matakucom" id="919226742232965120" >}}
+{{< x user="matakucom" id="919226742232965120" >}}
 
 
 ただ今日はこれに尽きるっちゃ。
 
-{{< tweet user="matakucom" id="1306795657483571201" >}}
+{{< x user="matakucom" id="1306795657483571201" >}}

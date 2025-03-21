@@ -8,13 +8,13 @@ tags:
 
 F1 レースを初めて見に行った。
 
-{{< tweet user="matakucom" id="1578618858948415493" >}}
+{{< x user="matakucom" id="1578618858948415493" >}}
 {{< caption "行きは臨時のシャトルバスがばんばん出ていて快適" >}}
 
-{{< tweet user="matakucom" id="1578642514005065728" >}}
+{{< x user="matakucom" id="1578642514005065728" >}}
 {{< caption "エンジン音びりびり伝わってくる" >}}
 
-{{< tweet user="matakucom" id="1578660641644371970" >}}
+{{< x user="matakucom" id="1578660641644371970" >}}
 {{< caption "ベッテル特設コーナーもあって暖かみがあった" >}}
 
 {{< vertical_space >}}
