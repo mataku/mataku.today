@@ -5,8 +5,8 @@
   customManagers: [
     {
       customType: 'regex',
-      fileMatch: [
-        '^.github/workflows/build.yml$',
+      managerFilePatterns: [
+        '/^.github/workflows/build.yml$/',
       ],
       matchStrings: [
         ".*echo 'HUGO_VERSION=(?<currentValue>.*?)'.*\n",
