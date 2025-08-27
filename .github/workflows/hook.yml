@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Await CF Pages
-        uses: WalshyDev/cf-pages-await@v1
+        uses: WalshyDev/cf-pages-await@3abae9f62a7672a1701300702ce42908e16cb88a # v1.3.1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -30,7 +30,7 @@ jobs:
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             -H "Content-Type: application/json" \
             --data '{"files":["https://mataku.today", "https://mataku.today/", "https://mataku.today/feed.xml"]}'
-      - uses: azu/rss-to-twitter@v2
+      - uses: azu/rss-to-twitter@7e20a41d61766ec62ccee5629e964518b33aa87e # v2.0.0
         with:
           RSS_URL: 'https://mataku.today/feed.xml'
           TWEET_TEMPLATE: '%url%'
