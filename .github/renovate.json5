@@ -36,6 +36,23 @@
     },
     {
       matchUpdateTypes: [
+        'major',
+        'patch',
+        'minor',
+      ],
+      groupName: 'GitHubActions',
+      matchManagers: [
+        'github-actions',
+      ],
+      automerge: true,
+      platformAutomerge: true,
+      timezone: 'Asia/Tokyo',
+      schedule: [
+        'at 3pm on Friday',
+      ],
+    },
+    {
+      matchUpdateTypes: [
         'minor',
         'patch',
         'major',
