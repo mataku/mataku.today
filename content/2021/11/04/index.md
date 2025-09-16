@@ -8,4 +8,4 @@ tags:
 
 喉つまりそうになりながら食べるオイコスはうまい。
 
-{{< ogp "https://blog.nogizaka46.com/shiori.kubo/2021/11/064063.php" >}}
+https://blog.nogizaka46.com/shiori.kubo/2021/11/064063.php

@@ -7,6 +7,6 @@ tags:
   - 乃木坂46
 ---
 
-{{< ogp "https://www.nogizaka46shop.com/lp/summertour2022" >}}
+https://www.nogizaka46shop.com/lp/summertour2022
 
 買った。いつも T シャツ微妙だから買ってなかったけども、今回のは良い。日向坂の担当が来たのだろうか。もし来ているならタオルの方まで影響を及ぼしてほしい。夏は近い。

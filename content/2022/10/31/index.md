@@ -7,7 +7,7 @@ tags:
   - 乃木坂46
 ---
 
-{{< ogp "https://nishinonanase.com/" >}}
+https://nishinonanase.com/
 
 なぁさんの 2023 カレンダーを買った。染みる。何かを発信しようとしてくれるその気持ちが本当にありがたい。シャイロックの子供たちも楽しみです。
 

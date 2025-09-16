@@ -37,4 +37,5 @@ Sing Out! もいまだに MV を見るが、見終わった後はもうその時
 
 - - -
 
-{{< ogp "https://mataku.today/2021/10/07/" >}}
+前回
+https://mataku.today/2021/10/07/
