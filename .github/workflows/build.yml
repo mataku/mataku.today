@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 1
       - name: Set hugo version
         run: |
-          echo 'HUGO_VERSION=v0.150.0' | sed 's/v//g' >> $GITHUB_ENV
+          echo 'HUGO_VERSION=v0.150.1' | sed 's/v//g' >> $GITHUB_ENV
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@75d2e84710de30f6ff7268e08f310b60ef14033f # v3.0.0
