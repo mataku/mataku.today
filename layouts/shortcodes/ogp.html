@@ -5,7 +5,6 @@
 {{ $fullUrl := printf "%s%s" $ogpApiEndpoint $url }}
 
 {{ $jsonTryData := try (resources.GetRemote $fullUrl | transform.Unmarshal) -}}
-{{ warnf "%s" $jsonTryData }}
 {{ $jsonData := $jsonTryData.Value }}
 {{ if eq $jsonData nil }}
   {{ $url }}
