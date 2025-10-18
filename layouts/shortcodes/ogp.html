@@ -2,10 +2,13 @@
 
 {{ $ogpApiEndpoint := getenv "OGP_API_ENDPOINT" }}
 
-{{ $jsonTryData := try (resources.GetRemote $ogpApiEndpoint $url | transform.Unmarshal) -}}
+{{ $fullUrl := printf "%s%s" $ogpApiEndpoint $url }}
+
+{{ $jsonTryData := try (resources.GetRemote $fullUrl | transform.Unmarshal) -}}
+{{ warnf "%s" $jsonTryData }}
 {{ $jsonData := $jsonTryData.Value }}
 {{ if eq $jsonData nil }}
-  $url
+  {{ $url }}
 {{ else }}
   {{ $siteName := $jsonData.siteName }}
   {{ $title := $jsonData.title }}
