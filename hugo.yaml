@@ -17,6 +17,7 @@ params:
   logo: ''
   ogpImage: images/ogp.jpg
   mainSections:
+    - '2026'
     - '2025'
     - '2024'
     - '2023'
