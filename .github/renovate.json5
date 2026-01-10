@@ -48,7 +48,7 @@
       platformAutomerge: true,
       timezone: 'Asia/Tokyo',
       schedule: [
-        'at 3pm on Friday',
+        '* 15 * * 5',
       ],
     },
     {
@@ -60,7 +60,7 @@
       ],
       timezone: 'Asia/Tokyo',
       schedule: [
-        'at 4pm on Friday',
+        '* 16 * * 5',
       ],
       automerge: true,
       platformAutomerge: true,
