@@ -52,6 +52,20 @@
       ],
     },
     {
+      matchPackageNames: [
+        'gohugoio/hugo',
+      ],
+      matchManagers: [
+        'regex',
+      ],
+      timezone: 'Asia/Tokyo',
+      schedule: [
+        'at 4pm on Friday',
+      ],
+      automerge: true,
+      platformAutomerge: true,
+    },
+    {
       matchUpdateTypes: [
         'minor',
         'patch',
