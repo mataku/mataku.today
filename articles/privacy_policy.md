@@ -13,7 +13,7 @@ This blog is provided by Takuma Homma at no cost and is intended for use as is. 
 
 I do not collect any personal data. My website is static.
 
-To serve my website, I use Cloudflare Pages. Refer to [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/) for what information they collect.
+To serve my website, I use Cloudflare Workers. Refer to [Cloudflare Privacy Policy](https://www.cloudflare.com/privacypolicy/) for what information they collect.
 
 ## Analytics
 
@@ -22,6 +22,10 @@ I use [Cloudflare Web Analytics](https://developers.cloudflare.com/analytics/web
 ## Cookies
 
 I do not set any cookies.
+
+## Local Storage
+
+This site uses browser's localStorage to save your theme preference (light/dark mode). This data is stored only in your browser and is not transmitted to any server.
 
 ## Embedded content
 
