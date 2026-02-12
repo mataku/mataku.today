@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - Club Kids Never Die</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="icon" href="/assets/favicon.ico">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2EDE5">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#222831">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{url}}">
+    <meta property="og:image" content="https://mataku.com/assets/icon.png">
+    <meta property="og:site_name" content="Club Kids Never Die">
+</head>
+
+<body>
+    <div class="container">
+        <header class="site-header">
+            <a href="/">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                <span>Home</span>
+            </a>
+        </header>
+        <div class="article-card-wrapper">
+            <header class="article-header">
+                <h1>{{title}}</h1>
+                <time datetime="{{date}}">{{date}}</time>
+                <div class="tags">{{tags}}</div>
+            </header>
+            <main>
+                <article>
+                    {{content}}
+                </article>
+            </main>
+        </div>
+        {{footer}}
+    </div>
+    <script src="/assets/prism-core.min.js" defer></script>
+    <script src="/assets/prism-autoloader.min.js" data-autoloader-path="/assets/" defer></script>
+    {{x_widgets_script}}
+</body>
+
+</html>

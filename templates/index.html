@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mataku.today</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="icon" href="/assets/favicon.ico">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F2EDE5">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#222831">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <div class="container">
+        <header class="index-header">
+            <h1>mataku.today</h1>
+        </header>
+        <main>
+            <div class="article-list">
+                {{article_list}}
+            </div>
+            {{pagination}}
+        </main>
+        {{footer}}
+    </div>
+</body>
+
+</html>
