@@ -26,9 +26,6 @@ make upload-r2
 
 # Deploy a single image to R2
 make deploy-image path/to/image.png
-
-# Local development server
-make serve
 ```
 
 ## Architecture
@@ -38,13 +35,13 @@ make serve
 - **generator** (`:generator`): JVM application that converts Markdown articles to HTML
   - Entry point: `blog.MainKt`
   - Uses Commonmark for Markdown parsing with GFM extensions (tables, strikethrough, autolink)
-  - Transformers for embeds: X/Twitter, Gist, YouTube, Spotify
+  - Transformers for embeds: X/Twitter, Gist, YouTube, Spotify, ImageCaption
   - Outputs to `output/` directory
 
 - **worker** (`:worker`): Kotlin/JS Cloudflare Worker
   - Entry point: `worker.kt` (exports `fetch` function)
   - Routes requests and serves content from R2 bucket
-  - Handles: articles, assets, index, pagination, robots.txt, sitemap.xml
+  - Handles: articles, assets, index, pagination, robots.txt, sitemap.xml, feed.xml, articles.json, privacy_policy
 
 ### Content Structure
 
