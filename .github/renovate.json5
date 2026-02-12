@@ -1,78 +1,18 @@
 {
-  extends: [
-    'config:recommended',
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
   ],
-  customManagers: [
-    {
-      customType: 'regex',
-      managerFilePatterns: [
-        '/^.github/workflows/build.yml$/',
-      ],
-      matchStrings: [
-        ".*echo 'HUGO_VERSION=(?<currentValue>.*?)'.*\n",
-      ],
-      depNameTemplate: 'gohugoio/hugo',
-      datasourceTemplate: 'github-releases',
-    },
+  "timezone": "Asia/Tokyo",
+  "schedule": [
+    "* 15 * * 5"
   ],
-  packageRules: [
+  "packageRules": [
     {
-      matchManagers: [
-        'npm',
-      ],
-      matchDepTypes: [
-        'devDependencies',
-      ],
-      enabled: false,
-    },
-    {
-      matchManagers: [
-        'npm',
-      ],
-      matchDepTypes: [
-        'dependencies',
-      ],
-      enabled: false,
-    },
-    {
-      matchUpdateTypes: [
-        'major',
-        'patch',
-        'minor',
-      ],
-      groupName: 'GitHubActions',
-      matchManagers: [
-        'github-actions',
-      ],
-      automerge: true,
-      platformAutomerge: true,
-      timezone: 'Asia/Tokyo',
-      schedule: [
-        '* 15 * * 5',
-      ],
-    },
-    {
-      matchPackageNames: [
-        'gohugoio/hugo',
-      ],
-      matchManagers: [
-        'regex',
-      ],
-      timezone: 'Asia/Tokyo',
-      schedule: [
-        '* 16 * * 5',
-      ],
-      automerge: true,
-      platformAutomerge: true,
-    },
-    {
-      matchUpdateTypes: [
-        'minor',
-        'patch',
-        'major',
-      ],
-      automerge: true,
-      platformAutomerge: true,
-    },
-  ],
+      "matchManagers": ["github-actions", "npm", "gradle"],
+      "groupName": "devDependencies",
+      "automerge": true,
+      "platformAutomerge": true
+    }
+  ]
 }
