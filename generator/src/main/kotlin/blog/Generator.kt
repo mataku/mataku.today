@@ -5,14 +5,15 @@ import org.commonmark.ext.gfm.strikethrough.StrikethroughExtension
 import org.commonmark.ext.gfm.tables.TablesExtension
 import org.commonmark.parser.Parser
 import org.commonmark.renderer.html.HtmlRenderer
+import java.nio.file.Files
 import java.nio.file.Path
 import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
+import java.util.Locale
 import kotlin.io.path.createDirectories
 import kotlin.io.path.extension
-import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.nameWithoutExtension
 import kotlin.io.path.readText
 import kotlin.io.path.writeText
@@ -21,9 +22,7 @@ class Generator {
     private val projectRoot: Path = Path.of("").toAbsolutePath()
     private val articlesDir: Path = projectRoot.resolve("articles")
     private val outputDir: Path = projectRoot.resolve("output")
-    private val articlesOutputDir: Path = outputDir.resolve("articles")
     private val templatePath: Path = projectRoot.resolve("templates/article.html")
-    private val indexTemplatePath: Path = projectRoot.resolve("templates/index.html")
     private val notFoundTemplatePath: Path = projectRoot.resolve("templates/404.html")
 
     private val footerHtml = """
@@ -34,9 +33,11 @@ class Generator {
     """.trimIndent()
 
     fun run() {
-        articlesOutputDir.createDirectories()
+        outputDir.createDirectories()
 
-        val markdownFiles = articlesDir.listDirectoryEntries("*.md")
+        val markdownFiles = Files.walk(articlesDir)
+            .filter { it.extension == "md" }
+            .toList()
         if (markdownFiles.isEmpty()) {
             println("No markdown files found in $articlesDir")
             return
@@ -49,7 +50,6 @@ class Generator {
         )
         val parser = Parser.builder().extensions(extensions).build()
         val renderer = HtmlRenderer.builder().extensions(extensions).build()
-        val articleMetadataList = mutableListOf<Map<String, Any>>()
 
         for (file in markdownFiles) {
             if (file.extension != "md") continue
@@ -62,19 +62,23 @@ class Generator {
             val captionedHtml = ImageCaptionTransformer.transform(rawHtmlBody)
             val xEmbedResult = XEmbedTransformer.transform(captionedHtml)
             val gistEmbeddedHtml = GistEmbedTransformer.transform(xEmbedResult.html)
-            val htmlBody = gistEmbeddedHtml
+            val youtubeEmbeddedHtml = YouTubeEmbedTransformer.transform(gistEmbeddedHtml)
+            val spotifyEmbeddedHtml = SpotifyEmbedTransformer.transform(youtubeEmbeddedHtml)
+            val htmlBody = spotifyEmbeddedHtml
 
             val tagsHtml = if (article.tags.isNotEmpty()) {
                 article.tags.joinToString("") { """<span class="tag">$it</span>""" }
             } else ""
 
+            val relativePath = articlesDir.relativize(file.parent)
             val slug = file.nameWithoutExtension
+            val urlPath = relativePath.resolve(slug).toString().replace("\\", "/")
 
             val variables = article.metadata.toMutableMap()
             variables["content"] = htmlBody
             variables["tags"] = tagsHtml
             variables["date"] = formatDateForDisplay(article.metadata["date"] ?: "")
-            variables["url"] = "https://mataku.today/articles/$slug"
+            variables["url"] = "https://mataku.today/$urlPath"
             variables["description"] = generateDescription(htmlBody)
             variables["footer"] = footerHtml
             variables["x_widgets_script"] = if (xEmbedResult.hasXEmbed) {
@@ -82,27 +86,13 @@ class Generator {
             } else ""
 
             val html = TemplateEngine.render(templatePath, variables)
-            val outputFile = articlesOutputDir.resolve("$slug.html")
+            val outputArticleDir = outputDir.resolve(relativePath)
+            outputArticleDir.createDirectories()
+            val outputFile = outputArticleDir.resolve("$slug.html")
             outputFile.writeText(html)
             println("Generated: $outputFile")
-
-            articleMetadataList.add(
-                mapOf(
-                    "title" to (article.metadata["title"] ?: slug),
-                    "date" to formatDateForDisplay(article.metadata["date"] ?: ""),
-                    "path" to "/articles/$slug",
-                    "tags" to article.tags
-                )
-            )
         }
 
-        val sortedArticles = articleMetadataList.sortedByDescending { (it["date"] as? String) ?: "" }
-        val json = JsonWriter.buildArticlesJson(sortedArticles)
-        val jsonOutputFile = outputDir.resolve("articles.json")
-        jsonOutputFile.writeText(json)
-        println("Generated: $jsonOutputFile")
-
-        generateStaticPage(indexTemplatePath, outputDir.resolve("index.html"))
         generateStaticPage(notFoundTemplatePath, outputDir.resolve("404.html"))
     }
 
@@ -116,13 +106,15 @@ class Generator {
     private fun formatDateForDisplay(dateString: String): String {
         if (dateString.isBlank()) return ""
 
+        val displayFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy", Locale.ENGLISH)
+
         return try {
             val offsetDateTime = OffsetDateTime.parse(dateString, DateTimeFormatter.ISO_OFFSET_DATE_TIME)
-            offsetDateTime.toLocalDate().format(DateTimeFormatter.ISO_LOCAL_DATE)
+            offsetDateTime.toLocalDate().format(displayFormatter)
         } catch (e: DateTimeParseException) {
             try {
-                LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE)
-                dateString
+                val localDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_LOCAL_DATE)
+                localDate.format(displayFormatter)
             } catch (e: DateTimeParseException) {
                 throw IllegalArgumentException("Invalid date format: $dateString")
             }

@@ -3,7 +3,16 @@
 /node_modules
 /.DS_Store
 .hugo_build.lock
-/build
+/**/build
 /.vscode
 /.node-version
 functions/wrangler.toml
+
+.wrangler/
+.gradle/
+
+/output/*
+!/output/articles.js
+!/output/styles.css
+!/output/assets/
+!/output/images/

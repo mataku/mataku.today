@@ -1,6 +1,20 @@
-serve:
-	npx wrangler pages dev functions/ && OGP_API_ENDPOINT="http://127.0.0.1:8788/ogp?url=" hugo server -D &
+.PHONY: upload-r2
 
-today:
-	$(eval TODAY_FILE := content/$(shell date +%Y)/$(shell date +%m)/$(shell date +%d)/index.md)
-	hugo new $(TODAY_FILE) && nvim $(TODAY_FILE)
+upload-r2:
+	@find output -type f | while read file; do \
+		key=$${file#output/}; \
+		npx wrangler r2 object put mataku-today/$$key --file=$$file --remote; \
+	done
+
+build-worker:
+	./gradlew :worker:compileProductionExecutableKotlinJs --no-daemon
+
+deploy-image:
+	@if [ -z "$(filter-out $@,$(MAKECMDGOALS))" ]; then \
+		echo "Error: FILE is required. Usage: make deploy-image path/to/image.png"; \
+		exit 1; \
+	fi
+	@npx wrangler r2 object put mataku-today/$(filter-out $@,$(MAKECMDGOALS)) --file=articles/$(filter-out $@,$(MAKECMDGOALS)) --remote
+
+%:
+	@:

@@ -1,11 +1,11 @@
 package blog
 
+import java.nio.file.Files
 import java.nio.file.Path
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.io.path.createDirectories
 import kotlin.io.path.extension
-import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.nameWithoutExtension
 import kotlin.io.path.readText
 import kotlin.io.path.writeText
@@ -28,14 +28,15 @@ object FeedGenerator {
     private fun generate() {
         outputDir.createDirectories()
 
-        val markdownFiles = articlesDir.listDirectoryEntries("*.md")
+        val markdownFiles = Files.walk(articlesDir)
+            .filter { it.extension == "md" }
+            .toList()
         if (markdownFiles.isEmpty()) {
             println("No markdown files found in $articlesDir")
             return
         }
 
         val entries = markdownFiles
-            .filter { it.extension == "md" }
             .mapNotNull { file ->
                 val raw = file.readText()
                 val article = FrontmatterParser.parse(raw)
@@ -44,10 +45,12 @@ object FeedGenerator {
                 val isDraft = article.metadata["draft"]?.toBoolean() ?: false
                 if (isDraft) return@mapNotNull null
 
+                val relativePath = articlesDir.relativize(file.parent)
                 val slug = file.nameWithoutExtension
+                val urlPath = relativePath.resolve(slug).toString().replace("\\", "/")
                 val summary = extractSummary(article.content)
 
-                FeedEntry(slug, title, dateStr, summary, article.tags)
+                FeedEntry(urlPath, title, dateStr, summary, article.tags)
             }
             .sortedByDescending { it.date }
             .take(MAX_ENTRIES)
@@ -97,7 +100,7 @@ object FeedGenerator {
         sb.appendLine("  </author>")
 
         for (entry in entries) {
-            val entryUrl = "$SITE_URL/articles/${entry.slug}"
+            val entryUrl = "$SITE_URL/${entry.slug}"
             sb.appendLine()
             sb.appendLine("  <entry>")
             sb.appendLine("    <title>${escapeXml(entry.title)}</title>")

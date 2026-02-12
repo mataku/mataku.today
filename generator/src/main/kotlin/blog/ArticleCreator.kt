@@ -3,6 +3,7 @@ package blog
 import java.nio.file.Path
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.io.path.createDirectories
 import kotlin.io.path.exists
 import kotlin.io.path.writeText
 
@@ -21,14 +22,18 @@ object ArticleCreator {
     }
 
     private fun create(article: String) {
-        val outputPath = articlesDir.resolve("$article.md")
+        val now = ZonedDateTime.now()
+        val datePath = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+        val articleDir = articlesDir.resolve(datePath)
+        articleDir.createDirectories()
+        val outputPath = articleDir.resolve("$article.md")
 
         if (outputPath.exists()) {
             System.err.println("Error: File already exists: $outputPath")
             System.exit(1)
         }
 
-        val today = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX"))
+        val today = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX"))
         val variables = mapOf("date" to today)
 
         val content = TemplateEngine.render(templatePath, variables)
