@@ -1,4 +1,4 @@
-.PHONY: upload-r2
+.PHONY: upload-r2 build-worker deploy-image generate
 
 upload-r2:
 	@find output -type f | while read file; do \
@@ -18,3 +18,6 @@ deploy-image:
 
 %:
 	@:
+
+generate:
+	./gradlew :generator:run --no-daemon
