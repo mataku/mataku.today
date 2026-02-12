@@ -23,10 +23,7 @@ Firebase App Distribution は、アップロードしたバイナリに対し任
 
 - - - 
 
-<figure>
-  ![](./app_distribution_detail.png)
-  <figcaption>Firebase App Distribution のアプリ詳細画面サンプル</figcaption>
-</figure>
+![](./app_distribution_detail.png "Firebase App Distribution のアプリ詳細画面サンプル")
 
 ```yaml
 name: Deploy app to firebase app distribution
