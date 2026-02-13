@@ -46,8 +46,7 @@ object FeedGenerator {
                 if (isDraft) return@mapNotNull null
 
                 val relativePath = articlesDir.relativize(file.parent)
-                val slug = file.nameWithoutExtension
-                val urlPath = relativePath.resolve(slug).toString().replace("\\", "/")
+                val urlPath = relativePath.toString().replace("\\", "/")
                 val summary = extractSummary(article.content)
 
                 FeedEntry(urlPath, title, dateStr, summary, article.tags)

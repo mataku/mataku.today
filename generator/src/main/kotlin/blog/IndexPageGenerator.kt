@@ -90,8 +90,7 @@ object IndexPageGenerator {
                 if (isDraft) return@mapNotNull null
 
                 val relativePath = articlesDir.relativize(file.parent)
-                val slug = file.nameWithoutExtension
-                val urlPath = relativePath.resolve(slug).toString().replace("\\", "/")
+                val urlPath = relativePath.toString().replace("\\", "/")
 
                 val document = parser.parse(article.content)
                 val htmlBody = renderer.render(document)
