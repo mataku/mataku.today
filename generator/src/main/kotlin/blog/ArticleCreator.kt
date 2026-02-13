@@ -14,27 +14,27 @@ object ArticleCreator {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        if (args.isEmpty()) {
-            System.err.println("Usage: ./gradlew :generator:new --args=\"<article>\"")
-            System.exit(1)
-        }
-        create(args[0])
+        create()
     }
 
-    private fun create(article: String) {
+    private fun create() {
         val now = ZonedDateTime.now()
         val datePath = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
         val articleDir = articlesDir.resolve(datePath)
         articleDir.createDirectories()
-        val outputPath = articleDir.resolve("$article.md")
+        val outputPath = articleDir.resolve("index.md")
 
         if (outputPath.exists()) {
             System.err.println("Error: File already exists: $outputPath")
             System.exit(1)
         }
 
-        val today = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX"))
-        val variables = mapOf("date" to today)
+        val title = now.format(DateTimeFormatter.ofPattern("yyyy/MM/dd"))
+        val date = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX"))
+        val variables = mapOf(
+            "title" to title,
+            "date" to date
+        )
 
         val content = TemplateEngine.render(templatePath, variables)
         outputPath.writeText(content)

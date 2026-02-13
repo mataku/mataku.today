@@ -1,4 +1,4 @@
-.PHONY: upload-r2 build-worker deploy-image generate
+.PHONY: upload-r2 build-worker deploy-image generate today
 
 upload-r2:
 	@find output -type f | while read file; do \
@@ -21,3 +21,6 @@ deploy-image:
 
 generate:
 	./gradlew :generator:run --no-daemon
+
+today:
+	./gradlew :generator:new --no-daemon
