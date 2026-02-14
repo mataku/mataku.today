@@ -162,7 +162,7 @@ body {
 
 .article-header time {
     display: block;
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: 0.8rem;
     color: var(--color-text-muted);
     letter-spacing: 0.05em;
