@@ -1,29 +1,31 @@
 # mataku.today
 
-A personal diary built with Kotlin static site generator and Cloudflare Worker.
+Personal diary built with Kotlin.
 
-## Architecture
+## Modules
 
-- **generator** - JVM application that converts Markdown to HTML
-  - Uses Commonmark for Markdown parsing with GFM extensions (tables, strikethrough, autolink)
-  - Supports embeds: X/Twitter, Gist, YouTube, Spotify
-- **worker** - Cloudflare Worker implemented in Kotlin/JS
-  - Serves content from Worker Assets
+### Generator (Kotlin/JVM)
 
-## Development
+Converts Markdown files with YAML frontmatter to HTML. Uses `org.commonmark:commonmark` for GFM parsing.
+
+Supports embeds: X/Twitter, Gist, YouTube and Spotify.
+
+### Worker (Kotlin/JS)
+
+Cloudflare Worker implemented in Kotlin/JS. Serves content from Worker Assets.
+
+## Build
 
 ```shell
-# Generate HTML from markdown articles
-make generate
+make new              # Create a new article (articles/YYYY/MM/DD/index.
+make generate         # Generate HTML from markdown articles
+make build-worker     # Build Cloudflare Worker
+```
 
-# Build Cloudflare Worker
-make build-worker
+## Deployment
 
-# Create a new article (articles/YYYY/MM/DD/index.md)
-./gradlew :generator:new
-
-# Generate RSS feed
-./gradlew :generator:feed
+```shell
+make deploy
 ```
 
 ## Content Structure
