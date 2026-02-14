@@ -53,3 +53,21 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
             -H "Content-Type: application/json" \
             --data '{"files":["https://mataku.today","https://mataku.today/","https://mataku.today/assets/styles.css","https://mataku.today/page/*","https://mataku.today/feed.xml"]}'
+
+      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        id: changes
+        with:
+          filters: |
+            articles:
+              - added: 'articles/**'
+
+      - uses: azu/rss-to-twitter@7e20a41d61766ec62ccee5629e964518b33aa87e # v2.0.0
+        if: steps.changes.outputs.articles == 'true'
+        with:
+          RSS_URL: 'https://mataku.today/feed.xml'
+          TWEET_TEMPLATE: '%url%'
+          UPDATE_WITHIN_MINUTES: 600
+          TWITTER_APIKEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_APIKEY_SECRET: ${{ secrets.TWITTER_API_KEY_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
