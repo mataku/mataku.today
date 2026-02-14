@@ -24,13 +24,6 @@ object IndexPageGenerator {
     private val outputDir: Path = projectRoot.resolve("output")
     private val templatePath: Path = projectRoot.resolve("templates/index.html")
 
-    private val footerHtml = """
-        <footer>
-            &copy; Takuma Homma
-            <span class="footer-credit">Made with <a href="https://kotlinlang.org" target="_blank" rel="noopener">Kotlin</a></span>
-        </footer>
-    """.trimIndent()
-
     fun generate() {
         val articles = collectArticles()
         if (articles.isEmpty()) {
@@ -51,7 +44,8 @@ object IndexPageGenerator {
             val variables = mapOf(
                 "article_list" to articleListHtml,
                 "pagination" to paginationHtml,
-                "footer" to footerHtml
+                "footer" to SiteConfig.footerHtml,
+                "theme_toggle" to SiteConfig.themeToggleHtml
             )
 
             val html = TemplateEngine.render(templatePath, variables)
