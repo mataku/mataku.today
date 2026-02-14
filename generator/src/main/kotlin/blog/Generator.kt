@@ -7,6 +7,7 @@ import org.commonmark.parser.Parser
 import org.commonmark.renderer.html.HtmlRenderer
 import java.nio.file.Files
 import java.nio.file.Path
+import java.nio.file.StandardCopyOption
 import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
@@ -85,9 +86,22 @@ class Generator {
             val outputFile = outputArticleDir.resolve("$slug.html")
             outputFile.writeText(html)
             println("Generated: $outputFile")
+
+            copyArticleImages(file.parent, outputArticleDir)
         }
 
         generateStaticPage(notFoundTemplatePath, outputDir.resolve("404.html"))
+    }
+
+    private val imageExtensions = setOf("png", "jpg", "jpeg", "gif")
+
+    private fun copyArticleImages(articleDir: Path, outputArticleDir: Path) {
+        Files.list(articleDir)
+            .filter { it.extension in imageExtensions }
+            .forEach { imageFile ->
+                Files.copy(imageFile, outputArticleDir.resolve(imageFile.fileName), StandardCopyOption.REPLACE_EXISTING)
+                println("Copied: ${outputArticleDir.resolve(imageFile.fileName)}")
+            }
     }
 
     private fun generateStaticPage(templatePath: Path, outputPath: Path) {

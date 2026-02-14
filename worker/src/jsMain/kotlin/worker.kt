@@ -5,15 +5,11 @@ import kotlin.js.Promise
 import kotlin.js.json
 
 private external interface Env {
-    val BUCKET: R2Bucket
+    val ASSETS: AssetsFetcher
 }
 
-private external interface R2Bucket {
-    fun get(key: String): Promise<R2Object?>
-}
-
-private external interface R2Object {
-    val body: dynamic
+private external interface AssetsFetcher {
+    fun fetch(input: Request): Promise<Response>
 }
 
 private sealed class Route {
@@ -33,77 +29,78 @@ private sealed class Route {
 fun fetch(request: Request, env: dynamic): Promise<Response> {
     val url = js("new URL(request.url)")
     val pathname = (url.pathname as String).removePrefix("/")
+    val origin = url.origin as String
     val route = resolveRoute(pathname)
-    return handleRoute(route, env)
+    return handleRoute(route, env, origin)
 }
 
-private fun notFoundHandler(env: Env): Promise<Response> {
+private fun notFoundHandler(env: Env, origin: String): Promise<Response> {
     val headers = buildHeaders(
         contentType = "text/html; charset=utf-8",
         cacheControl = "public, max-age=300"
     )
-    return env.BUCKET.get("404.html").then { obj: R2Object? ->
-        if (obj == null) {
+    return env.ASSETS.fetch(Request("$origin/404.html")).then { response: Response ->
+        if (!response.ok) {
             Response("Not Found", ResponseInit(status = 404, headers = headers))
         } else {
-            Response(obj.body, ResponseInit(status = 404, headers = headers))
+            Response(response.body, ResponseInit(status = 404, headers = headers))
         }
     }
 }
 
-private fun handleRoute(route: Route, env: dynamic): Promise<Response> {
+private fun handleRoute(route: Route, env: dynamic, origin: String): Promise<Response> {
     val typedEnv = env.unsafeCast<Env>()
     return when (route) {
         is Route.RobotsTxt -> robotsTxtHandler()
         is Route.SitemapXml -> sitemapXmlHandler()
-        is Route.NotFound -> notFoundHandler(typedEnv)
-        is Route.Index -> indexHandler(typedEnv)
-        is Route.Asset -> assetHandler(route.key, typedEnv)
-        is Route.Article -> articleHandler(route.datePath, typedEnv)
-        is Route.ArticleAsset -> articleAssetHandler(route.datePath, route.filename, typedEnv)
-        is Route.Page -> pageHandler(route.num, typedEnv)
-        is Route.PrivacyPolicy -> privacyPolicyHandler(typedEnv)
+        is Route.NotFound -> notFoundHandler(typedEnv, origin)
+        is Route.Index -> indexHandler(typedEnv, origin)
+        is Route.Asset -> assetHandler(route.key, typedEnv, origin)
+        is Route.Article -> articleHandler(route.datePath, typedEnv, origin)
+        is Route.ArticleAsset -> articleAssetHandler(route.datePath, route.filename, typedEnv, origin)
+        is Route.Page -> pageHandler(route.num, typedEnv, origin)
+        is Route.PrivacyPolicy -> privacyPolicyHandler(typedEnv, origin)
     }
 }
 
-private fun indexHandler(env: Env): Promise<Response> {
-    return fetchFromR2("index.html", env)
+private fun indexHandler(env: Env, origin: String): Promise<Response> {
+    return fetchFromAssets("index.html", env, origin)
 }
 
-private fun assetHandler(key: String, env: Env): Promise<Response> {
-    return fetchFromR2(key, env)
+private fun assetHandler(key: String, env: Env, origin: String): Promise<Response> {
+    return fetchFromAssets(key, env, origin)
 }
 
-private fun articleHandler(datePath: String, env: Env): Promise<Response> {
-    return fetchFromR2("$datePath/index.html", env)
+private fun articleHandler(datePath: String, env: Env, origin: String): Promise<Response> {
+    return fetchFromAssets("$datePath/index.html", env, origin)
 }
 
-private fun articleAssetHandler(datePath: String, filename: String, env: Env): Promise<Response> {
-    return fetchFromR2("$datePath/$filename", env)
+private fun articleAssetHandler(datePath: String, filename: String, env: Env, origin: String): Promise<Response> {
+    return fetchFromAssets("$datePath/$filename", env, origin)
 }
 
-private fun pageHandler(num: String, env: Env): Promise<Response> {
-    return fetchFromR2("page/$num/index.html", env)
+private fun pageHandler(num: String, env: Env, origin: String): Promise<Response> {
+    return fetchFromAssets("page/$num/index.html", env, origin)
 }
 
-private fun privacyPolicyHandler(env: Env): Promise<Response> {
-    return fetchFromR2("privacy_policy.html", env)
+private fun privacyPolicyHandler(env: Env, origin: String): Promise<Response> {
+    return fetchFromAssets("privacy_policy.html", env, origin)
 }
 
-private fun fetchFromR2(key: String, env: Env): Promise<Response> {
+private fun fetchFromAssets(key: String, env: Env, origin: String): Promise<Response> {
     val contentType = contentTypeFor(key)
     if (contentType == null) {
-        return notFoundHandler(env)
+        return notFoundHandler(env, origin)
     }
-    return env.BUCKET.get(key).then { obj: R2Object? ->
-        if (obj == null) {
-            notFoundHandler(env)
+    return env.ASSETS.fetch(Request("$origin/$key")).then { response: Response ->
+        if (!response.ok) {
+            notFoundHandler(env, origin)
         } else {
             val headers = buildHeaders(
                 contentType = contentType,
                 cacheControl = cacheControlFor(key)
             )
-            Promise.resolve(Response(obj.body, ResponseInit(headers = headers)))
+            Promise.resolve(Response(response.body, ResponseInit(headers = headers)))
         }
     }.asDynamic().unsafeCast<Promise<Response>>()
 }
@@ -138,7 +135,6 @@ private fun resolveRoute(pathname: String): Route {
         pathname == "robots.txt" -> Route.RobotsTxt
         pathname == "sitemap.xml" -> Route.SitemapXml
         pathname.isEmpty() -> Route.Index
-        pathname == "articles.json" -> Route.Asset(pathname)
         pathname == "feed.xml" -> Route.Asset(pathname)
         pathname.startsWith("assets/") -> Route.Asset(pathname)
         pathname.startsWith("images/") -> Route.Asset(pathname)

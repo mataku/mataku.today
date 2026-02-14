@@ -8,7 +8,7 @@ A personal diary built with Kotlin static site generator and Cloudflare Worker.
   - Uses Commonmark for Markdown parsing with GFM extensions (tables, strikethrough, autolink)
   - Supports embeds: X/Twitter, Gist, YouTube, Spotify
 - **worker** - Cloudflare Worker implemented in Kotlin/JS
-  - Serves content from R2 bucket
+  - Serves content from Worker Assets
 
 ## Development
 
