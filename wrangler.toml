@@ -1,8 +1,0 @@
-name = "mataku-today"
-main = "worker/entry.js"
-compatibility_date = "2026-02-13"
-
-[assets]
-directory = "./output/"
-run_worker_first = false # Delegate to the Workers' default routing handling at first
-binding = "ASSETS"

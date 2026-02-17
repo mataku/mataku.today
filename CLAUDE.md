@@ -43,7 +43,7 @@ make deploy
 
 ### Deployment
 
-- `output/` directory is deployed as Cloudflare Worker Assets (configured in `wrangler.toml`)
+- `output/` directory is deployed as Cloudflare Worker Assets (configured in `wrangler.jsonc`)
 - GitHub Actions (`.github/workflows/deploy.yaml`) runs on push to `develop`: generate → build-worker → wrangler deploy → cache purge
 
 ### Content Structure
