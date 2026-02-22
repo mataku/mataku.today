@@ -27,6 +27,8 @@
     --color-inline-code-bg: #f0eeeb;
     --color-link: #7F52FF;
     --color-tag: #7F52FF;
+    --color-toggle-bg: rgba(0, 0, 0, 0.06);
+    --color-toggle-bg-hover: rgba(0, 0, 0, 0.12);
     --font-heading: -apple-system, "Noto Sans JP", sans-serif;
     --font-body: -apple-system, "Noto Sans JP", sans-serif;
     --font-mono: "JetBrains Mono", monospace;
@@ -49,6 +51,8 @@
         --color-code-text: #d4d4d4;
         --color-inline-code-bg: #393e46;
         --color-link: #9b7aff;
+        --color-toggle-bg: rgba(255, 255, 255, 0.08);
+        --color-toggle-bg-hover: rgba(255, 255, 255, 0.15);
     }
 }
 
@@ -67,6 +71,8 @@
     --color-code-text: #d4d4d4;
     --color-inline-code-bg: #393e46;
     --color-link: #9b7aff;
+    --color-toggle-bg: rgba(255, 255, 255, 0.08);
+    --color-toggle-bg-hover: rgba(255, 255, 255, 0.15);
 }
 
 /* Light Mode - Manual Toggle (override system preference) */
@@ -84,6 +90,8 @@
     --color-tag: #7F52FF;
     --color-inline-code-bg: #f0eeeb;
     --color-link: #7F52FF;
+    --color-toggle-bg: rgba(0, 0, 0, 0.06);
+    --color-toggle-bg-hover: rgba(0, 0, 0, 0.12);
 }
 
 html {
@@ -288,19 +296,23 @@ article img {
 }
 
 .theme-toggle {
-    background: none;
+    background: var(--color-toggle-bg);
     border: none;
+    border-radius: 50%;
     cursor: pointer;
-    padding: 0.5rem;
+    width: 32px;
+    height: 32px;
+    padding: 0;
     color: var(--color-text-muted);
-    transition: color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .theme-toggle:hover {
-    color: var(--color-text);
+    background: var(--color-toggle-bg-hover);
+    color: var(--color-accent);
 }
 
 .icon-sun,
