@@ -17,7 +17,7 @@ import kotlin.io.path.readText
 import kotlin.io.path.writeText
 
 object IndexPageGenerator {
-    private const val ARTICLES_PER_PAGE = 20
+    private const val ARTICLES_PER_PAGE = 30
 
     private val projectRoot: Path = Path.of("").toAbsolutePath()
     private val articlesDir: Path = projectRoot.resolve("articles")
