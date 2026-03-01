@@ -14,7 +14,9 @@ import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.util.Locale
 import kotlin.io.path.createDirectories
+import kotlin.io.path.exists
 import kotlin.io.path.extension
+import kotlin.io.path.getLastModifiedTime
 import kotlin.io.path.nameWithoutExtension
 import kotlin.io.path.readText
 import kotlin.io.path.writeText
@@ -29,12 +31,27 @@ class Generator {
     fun run() {
         outputDir.createDirectories()
 
-        val markdownFiles = Files.walk(articlesDir)
+        val isDev = System.getenv("DEV") == "1"
+
+        val allMarkdownFiles = Files.walk(articlesDir)
             .filter { it.extension == "md" }
             .toList()
-        if (markdownFiles.isEmpty()) {
+        if (allMarkdownFiles.isEmpty()) {
             println("No markdown files found in $articlesDir")
             return
+        }
+
+        val markdownFiles = if (isDev) {
+            allMarkdownFiles.filter { file ->
+                val relativePath = articlesDir.relativize(file.parent)
+                val slug = file.nameWithoutExtension
+                val outputFile = outputDir.resolve(relativePath).resolve("$slug.html")
+                !outputFile.exists() || file.getLastModifiedTime() > outputFile.getLastModifiedTime()
+            }.also { filtered ->
+                println("DEV mode: ${filtered.size}/${allMarkdownFiles.size} articles to build")
+            }
+        } else {
+            allMarkdownFiles
         }
 
         val extensions = listOf(
@@ -90,7 +107,10 @@ class Generator {
             copyArticleImages(file.parent, outputArticleDir)
         }
 
-        generateStaticPage(notFoundTemplatePath, outputDir.resolve("404.html"))
+        val notFoundOutputPath = outputDir.resolve("404.html")
+        if (!isDev || !notFoundOutputPath.exists() || notFoundTemplatePath.getLastModifiedTime() > notFoundOutputPath.getLastModifiedTime()) {
+            generateStaticPage(notFoundTemplatePath, notFoundOutputPath)
+        }
     }
 
     private val imageExtensions = setOf("png", "jpg", "jpeg", "gif")
