@@ -9,7 +9,7 @@
   ],
   "packageRules": [
     {
-      "matchManagers": ["github-actions", "npm", "gradle"],
+      "matchManagers": ["github-actions", "npm", "gradle", "gradle-wrapper"],
       "groupName": "devDependencies",
       "automerge": true,
       "platformAutomerge": true
