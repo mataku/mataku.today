@@ -45,7 +45,7 @@ jobs:
             -H "Content-Type: application/json" \
             --data '{"files":["https://mataku.today","https://mataku.today/","https://mataku.today/assets/styles.css","https://mataku.today/page/*","https://mataku.today/feed.xml"]}'
 
-      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+      - uses: dorny/paths-filter@d1c1ffe0248fe513906c8e24db8ea791d46f8590 # v3.0.3
         id: changes
         with:
           filters: |
