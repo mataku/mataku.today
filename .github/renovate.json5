@@ -5,7 +5,7 @@
   ],
   "timezone": "Asia/Tokyo",
   "schedule": [
-    "* 15 * * 5"
+    "* 15-19 * * 5"
   ],
   "packageRules": [
     {
