@@ -7,6 +7,7 @@
   "schedule": [
     "* 15-19 * * 5"
   ],
+  "minimumReleaseAge": "7 days",
   "packageRules": [
     {
       "matchManagers": ["github-actions", "npm", "gradle", "gradle-wrapper"],
