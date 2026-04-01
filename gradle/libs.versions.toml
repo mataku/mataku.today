@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.3.20"
-commonmark = "0.27.1"
+commonmark = "0.28.0"
 snakeyaml-engine = "3.0.1"
 
 [libraries]
