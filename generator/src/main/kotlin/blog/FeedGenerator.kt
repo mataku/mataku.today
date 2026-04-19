@@ -47,6 +47,8 @@ object FeedGenerator {
           val title = article.metadata["title"] ?: return@mapNotNull null
           val isDraft = article.metadata["draft"]?.toBoolean() ?: false
           if (isDraft) return@mapNotNull null
+          val isUnlisted = article.metadata["unlisted"]?.toBoolean() ?: false
+          if (isUnlisted) return@mapNotNull null
 
           val relativePath = articlesDir.relativize(file.parent)
           val urlPath = relativePath.toString().replace("\\", "/")

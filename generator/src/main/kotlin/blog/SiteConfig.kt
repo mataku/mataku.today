@@ -6,6 +6,7 @@ object SiteConfig {
     <footer>
         &copy; Takuma Homma
         <span class="footer-credit">Made with <a href="https://kotlinlang.org" target="_blank" rel="noopener">Kotlin</a></span>
+        <span class="footer-credit"><a href="/privacy_policy">Privacy Policy</a></span>
     </footer>
     """.trimIndent()
 
