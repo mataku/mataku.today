@@ -38,4 +38,4 @@ Articles on this blog may include links to other sites. If you click on a third-
 
 ## Contact Me
 
-If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at nagomimatcha at gmail.com.
+If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at yo at mataku.com.
