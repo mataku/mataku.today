@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.4.0"
+kotlin = "2.4.10"
 commonmark = "0.29.0"
 snakeyaml-engine = "3.0.1"
 
