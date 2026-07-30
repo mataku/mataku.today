@@ -33,6 +33,7 @@ make deploy
   - Entry point: `blog.MainKt`
   - Uses Commonmark for Markdown parsing with GFM extensions (tables, strikethrough, autolink)
   - Transformers for embeds: X/Twitter, Gist, YouTube, Spotify, ImageCaption
+  - Copies `assets/` to `output/assets/` on every run
   - Outputs to `output/` directory
 
 - **worker** (`:worker`): Kotlin/JS Cloudflare Worker
@@ -50,7 +51,8 @@ make deploy
 
 - Articles: `articles/YYYY/MM/DD/index.md` with YAML frontmatter (title, date, tags)
 - Templates: `templates/` (article.html, index.html, 404.html, articles.md)
-- Output: `output/` (generated HTML, not committed)
+- Static assets: `assets/` (CSS, JS, icons — no template placeholders, copied verbatim)
+- Output: `output/` (fully generated, not committed)
 
 ### Frontmatter Format
 

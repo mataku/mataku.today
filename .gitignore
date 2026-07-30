@@ -11,8 +11,4 @@ functions/wrangler.toml
 .wrangler/
 .gradle/
 
-/output/*
-!/output/articles.js
-!/output/styles.css
-!/output/assets/
-!/output/images/
+/output
