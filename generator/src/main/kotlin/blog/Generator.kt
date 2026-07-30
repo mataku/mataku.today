@@ -17,6 +17,7 @@ import kotlin.io.path.createDirectories
 import kotlin.io.path.exists
 import kotlin.io.path.extension
 import kotlin.io.path.getLastModifiedTime
+import kotlin.io.path.isRegularFile
 import kotlin.io.path.nameWithoutExtension
 import kotlin.io.path.readText
 import kotlin.io.path.writeText
@@ -24,12 +25,14 @@ import kotlin.io.path.writeText
 class Generator {
   private val projectRoot: Path = Path.of("").toAbsolutePath()
   private val articlesDir: Path = projectRoot.resolve("articles")
+  private val assetsDir: Path = projectRoot.resolve("assets")
   private val outputDir: Path = projectRoot.resolve("output")
   private val templatePath: Path = projectRoot.resolve("templates/article.html")
   private val notFoundTemplatePath: Path = projectRoot.resolve("templates/404.html")
 
   fun run() {
     outputDir.createDirectories()
+    copyStaticAssets()
 
     val isDev = System.getenv("DEV") == "1"
 
@@ -124,6 +127,21 @@ class Generator {
     ) {
       generateStaticPage(notFoundTemplatePath, notFoundOutputPath)
     }
+  }
+
+  private fun copyStaticAssets() {
+    if (!assetsDir.exists()) return
+
+    val outputAssetsDir = outputDir.resolve("assets")
+    Files
+      .walk(assetsDir)
+      .filter { it.isRegularFile() }
+      .forEach { assetFile ->
+        val target = outputAssetsDir.resolve(assetsDir.relativize(assetFile))
+        target.parent.createDirectories()
+        Files.copy(assetFile, target, StandardCopyOption.REPLACE_EXISTING)
+        println("Copied: $target")
+      }
   }
 
   private val imageExtensions = setOf("png", "jpg", "jpeg", "gif")

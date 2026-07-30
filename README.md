@@ -40,5 +40,10 @@ templates/
 ├── article.html
 ├── index.html
 └── 404.html
-output/                     # Generated HTML (not committed)
+assets/                     # Static files copied to output/assets/
+├── styles.css
+├── theme.js
+├── favicon.ico
+└── prism-*.min.js
+output/                     # Generated output (not committed)
 ```
