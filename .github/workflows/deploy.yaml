@@ -38,6 +38,17 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx wrangler deploy
 
+      - name: Save bundle size baseline
+        run: |
+          ./scripts/bundle-report.sh
+          mv bundle-metrics.txt bundle-baseline.txt
+
+      - name: Cache bundle size baseline
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: bundle-baseline.txt
+          key: bundle-size-baseline-${{ github.sha }}
+
       - name: Purge Cloudflare cache
         run: |
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \

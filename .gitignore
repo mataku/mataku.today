@@ -12,3 +12,7 @@ functions/wrangler.toml
 .gradle/
 
 /output
+
+bundle-baseline.txt
+bundle-metrics.txt
+bundle-report.md

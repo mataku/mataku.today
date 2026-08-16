@@ -9,6 +9,7 @@ concurrency:
 
 permissions:
   pull-requests: write
+  contents: write
 
 jobs:
   preview:
@@ -40,19 +41,63 @@ jobs:
       - name: Build Worker
         run: make build-worker
 
+      - name: Restore bundle size baseline
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: bundle-baseline.txt
+          key: bundle-size-baseline-${{ github.event.pull_request.base.sha }}
+          restore-keys: bundle-size-baseline-
+
+      - name: Report bundle size
+        run: ./scripts/bundle-report.sh
+
       - name: Upload Worker Version
-        if: ${{ !startsWith(github.head_ref, 'renovate/') }}
         id: deploy
         uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: versions upload --preview-alias=feature-branch
-      
+
       - name: Comment deployment URL on PR
-        if: ${{ !startsWith(github.head_ref, 'renovate/') }}
         uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
         with:
           header: preview-deploy
           message: |
             Preview deployment: ${{ steps.deploy.outputs.deployment-url }}
+
+      - name: Append Worker startup time
+        env:
+          DEPLOY_OUTPUT: ${{ steps.deploy.outputs.command-output }}
+        run: |
+          startup=$(printf '%s' "$DEPLOY_OUTPUT" | grep -oE 'Worker Startup Time: [0-9]+ ms' | head -1 || true)
+          if [ -n "$startup" ]; then
+            printf '\n**%s** (limit: 1,000 ms)\n' "$startup" >> bundle-report.md
+          fi
+
+      - name: Comment bundle report on PR
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
+        with:
+          header: bundle-report
+          path: bundle-report.md
+
+      - name: Check bundle size regression
+        id: bundle_check
+        env:
+          BUNDLE_SIZE_THRESHOLD_PCT: ${{ vars.BUNDLE_SIZE_THRESHOLD_PCT }}
+        run: ./scripts/bundle-check.sh
+
+      - name: Disable auto-merge and request review
+        if: steps.bundle_check.outputs.regressed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REVIEWER: ${{ github.repository_owner }}
+        run: |
+          if [ "$(gh pr view "$PR_NUMBER" --json autoMergeRequest --jq '.autoMergeRequest != null')" = "true" ]; then
+            gh pr merge "$PR_NUMBER" --disable-auto
+          fi
+          author=$(gh pr view "$PR_NUMBER" --json author --jq '.author.login')
+          if [ "$author" != "$REVIEWER" ]; then
+            gh pr edit "$PR_NUMBER" --add-reviewer "$REVIEWER"
+          fi
