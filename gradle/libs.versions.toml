@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.4.10"
 commonmark = "0.30.0"
-snakeyaml-engine = "3.1"
+snakeyaml-engine = "3.1.1"
 
 [libraries]
 commonmark = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
