@@ -17,7 +17,7 @@ Cloudflare Worker implemented in Kotlin/JS. Serves content from Worker Assets.
 ## Build
 
 ```shell
-make new              # Create a new article (articles/YYYY/MM/DD/index.
+make today            # Create a new article (articles/YYYY/MM/DD/index.md, requires the kotlin CLI)
 make generate         # Generate HTML from markdown articles
 make build-worker     # Build Cloudflare Worker
 ```

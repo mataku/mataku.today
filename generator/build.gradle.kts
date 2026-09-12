@@ -23,14 +23,6 @@ tasks.named<JavaExec>("run") {
     workingDir = rootProject.projectDir
 }
 
-tasks.register<JavaExec>("new") {
-    group = "application"
-    description = "Create a new article markdown file"
-    mainClass.set("blog.ArticleCreator")
-    classpath = sourceSets["main"].runtimeClasspath
-    workingDir = rootProject.projectDir
-}
-
 tasks.register<JavaExec>("feed") {
     group = "application"
     description = "Generate RSS feed (feed.xml)"

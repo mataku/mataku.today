@@ -10,7 +10,7 @@ dev:
 	DEV=1 ./gradlew :generator:run -q
 
 today:
-	./gradlew :generator:new --no-daemon -q
+	kotlin scripts/new-article.main.kts
 
 deploy: generate build-worker
 	npx wrangler deploy

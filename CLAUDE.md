@@ -18,8 +18,8 @@ make build-worker
 # Deploy (generate + build-worker + wrangler deploy)
 make deploy
 
-# Create a new article (creates articles/YYYY/MM/DD/index.md)
-./gradlew :generator:new
+# Create a new article (creates articles/YYYY/MM/DD/index.md; requires the kotlin CLI)
+make today
 
 # Generate RSS feed (feed.xml)
 ./gradlew :generator:feed
