@@ -104,7 +104,7 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-body);
-    font-feature-settings: "palt";
+    font-feature-settings: "pkna";
     font-weight: 400;
     line-height: 1.9;
     letter-spacing: 0.04em;
@@ -161,6 +161,7 @@ body {
 
 .article-header h1 {
     font-family: var(--font-heading);
+    font-feature-settings: "palt";
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.5;
@@ -183,6 +184,7 @@ main {
 
 article h2 {
     font-family: var(--font-heading);
+    font-feature-settings: "palt";
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.5;
@@ -193,6 +195,7 @@ article h2 {
 
 article h3 {
     font-family: var(--font-heading);
+    font-feature-settings: "palt";
     font-size: 1.1rem;
     font-weight: 600;
     line-height: 1.5;
