@@ -31,6 +31,8 @@
       "matchManagers": ["gradle"],
       "matchPackageNames": ["/^org\\.jetbrains\\.kotlin/"],
       "groupName": "kotlin",
+      // Also track Beta / RC releases (stable releases remain tracked)
+      "ignoreUnstable": false,
       "automerge": true,
       "platformAutomerge": true
     }
