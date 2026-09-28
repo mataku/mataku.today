@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Generate articles
         run: make generate
 
@@ -36,7 +39,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx wrangler deploy
+        run: npx cf deploy
 
       - name: Save bundle size baseline
         run: |
@@ -50,11 +53,12 @@ jobs:
           key: bundle-size-baseline-${{ github.sha }}
 
       - name: Purge Cloudflare cache
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
         run: |
-          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
-            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            --data '{"files":["https://mataku.today","https://mataku.today/","https://mataku.today/assets/styles.css","https://mataku.today/page/*","https://mataku.today/feed.xml"]}'
+          npx cf cache purge --force \
+            --body '{"files":["https://mataku.today","https://mataku.today/","https://mataku.today/assets/styles.css","https://mataku.today/page/*","https://mataku.today/feed.xml"]}'
 
       - uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         id: changes

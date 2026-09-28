@@ -15,7 +15,7 @@ make generate
 # Build Cloudflare Worker
 make build-worker
 
-# Deploy (generate + build-worker + wrangler deploy)
+# Deploy (generate + build-worker + cf deploy)
 make deploy
 
 # Create a new article (creates articles/YYYY/MM/DD/index.md; requires the kotlin CLI)
@@ -44,8 +44,8 @@ make today
 
 ### Deployment
 
-- `output/` directory is deployed as Cloudflare Worker Assets (configured in `wrangler.jsonc`)
-- GitHub Actions (`.github/workflows/deploy.yaml`) runs on push to `develop`: generate → build-worker → wrangler deploy → cache purge
+- `output/` directory is deployed as Cloudflare Worker Assets (configured in `cloudflare.config.ts` / `wrangler.config.ts` for the `cf` CLI)
+- GitHub Actions (`.github/workflows/deploy.yaml`) runs on push to `develop`: generate → build-worker → cf deploy → cf cache purge
 
 ### Content Structure
 

@@ -9,6 +9,7 @@
 functions/wrangler.toml
 
 .wrangler/
+.cloudflare/
 .gradle/
 
 /output

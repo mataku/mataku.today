@@ -51,13 +51,14 @@ jobs:
       - name: Report bundle size
         run: ./scripts/bundle-report.sh
 
-      - name: Upload Worker Version
+      - name: Deploy Worker Preview
         id: deploy
-        uses: cloudflare/wrangler-action@ebbaa1584979971c8614a24965b4405ff95890e0 # v4.0
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: versions upload --preview-alias=feature-branch
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          url=$(npx cf previews deploy | jq -r '.preview_urls[0]')
+          echo "deployment-url=$url" >> "$GITHUB_OUTPUT"
 
       - name: Comment deployment URL on PR
         uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
@@ -65,15 +66,6 @@ jobs:
           header: preview-deploy
           message: |
             Preview deployment: ${{ steps.deploy.outputs.deployment-url }}
-
-      - name: Append Worker startup time
-        env:
-          DEPLOY_OUTPUT: ${{ steps.deploy.outputs.command-output }}
-        run: |
-          startup=$(printf '%s' "$DEPLOY_OUTPUT" | grep -oE 'Worker Startup Time: [0-9]+ ms' | head -1 || true)
-          if [ -n "$startup" ]; then
-            printf '\n**%s** (limit: 1,000 ms)\n' "$startup" >> bundle-report.md
-          fi
 
       - name: Comment bundle report on PR
         uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
