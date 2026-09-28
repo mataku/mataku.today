@@ -3,14 +3,13 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-BUNDLE_DIR="build/bundle-report/worker"
+BUNDLE_DIR=".cloudflare/output/v0/workers/default/bundle"
 ASSETS_DIR="output"
 BASELINE="bundle-baseline.txt"
 METRICS="bundle-metrics.txt"
 REPORT="bundle-report.md"
 
-rm -rf "$BUNDLE_DIR"
-npx wrangler deploy --dry-run --outdir="$BUNDLE_DIR" > /dev/null
+npx cf build > /dev/null
 
 baseline_get() {
   if [ -f "$BASELINE" ]; then

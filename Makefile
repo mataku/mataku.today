@@ -13,7 +13,7 @@ today:
 	kotlin scripts/new-article.main.kts
 
 deploy: generate build-worker
-	npx wrangler deploy
+	npx cf deploy
 
 serve:
-	npx wrangler dev
+	npx cf dev
