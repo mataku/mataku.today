@@ -8,6 +8,7 @@ repositories {
 
 kotlin {
     js {
+        useEsModules()
         nodejs()
         binaries.executable()
         compilations.all {
