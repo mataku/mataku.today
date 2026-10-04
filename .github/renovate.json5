@@ -1,13 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "github>mataku/renovate-config:default.json5"
   ],
-  "timezone": "Asia/Tokyo",
   "schedule": [
     "* 15-23 * * 5"
   ],
-  "minimumReleaseAge": "7 days",
   "packageRules": [
     {
       "matchManagers": ["gradle-wrapper"],
