@@ -7,7 +7,6 @@ import org.commonmark.parser.Parser
 import org.commonmark.renderer.html.HtmlRenderer
 import java.nio.file.Files
 import java.nio.file.Path
-import java.nio.file.StandardCopyOption
 import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
@@ -17,10 +16,8 @@ import kotlin.io.path.createDirectories
 import kotlin.io.path.exists
 import kotlin.io.path.extension
 import kotlin.io.path.getLastModifiedTime
-import kotlin.io.path.isRegularFile
 import kotlin.io.path.nameWithoutExtension
 import kotlin.io.path.readText
-import kotlin.io.path.writeText
 
 class Generator {
   private val projectRoot: Path = Path.of("").toAbsolutePath()
@@ -32,7 +29,7 @@ class Generator {
 
   fun run() {
     outputDir.createDirectories()
-    copyStaticAssets()
+    StaticFileSyncer.sync(assetsDir, outputDir.resolve("assets"))
 
     val isDev = System.getenv("DEV") == "1"
 
@@ -112,14 +109,11 @@ class Generator {
         }
 
       val html = TemplateEngine.render(templatePath, variables)
-      val outputArticleDir = outputDir.resolve(relativePath)
-      outputArticleDir.createDirectories()
-      val outputFile = outputArticleDir.resolve("$slug.html")
-      outputFile.writeText(html)
-      println("Generated: $outputFile")
-
-      copyArticleImages(file.parent, outputArticleDir)
+      val outputFile = outputDir.resolve(relativePath).resolve("$slug.html")
+      if (OutputWriter.writeIfChanged(outputFile, html)) println("Generated: $outputFile")
     }
+
+    StaticFileSyncer.sync(articlesDir, outputDir) { it.extension in imageExtensions }
 
     val notFoundOutputPath = outputDir.resolve("404.html")
     if (!isDev || !notFoundOutputPath.exists() ||
@@ -129,35 +123,7 @@ class Generator {
     }
   }
 
-  private fun copyStaticAssets() {
-    if (!assetsDir.exists()) return
-
-    val outputAssetsDir = outputDir.resolve("assets")
-    Files
-      .walk(assetsDir)
-      .filter { it.isRegularFile() }
-      .forEach { assetFile ->
-        val target = outputAssetsDir.resolve(assetsDir.relativize(assetFile))
-        target.parent.createDirectories()
-        Files.copy(assetFile, target, StandardCopyOption.REPLACE_EXISTING)
-        println("Copied: $target")
-      }
-  }
-
   private val imageExtensions = setOf("png", "jpg", "jpeg", "gif")
-
-  private fun copyArticleImages(
-    articleDir: Path,
-    outputArticleDir: Path,
-  ) {
-    Files
-      .list(articleDir)
-      .filter { it.extension in imageExtensions }
-      .forEach { imageFile ->
-        Files.copy(imageFile, outputArticleDir.resolve(imageFile.fileName), StandardCopyOption.REPLACE_EXISTING)
-        println("Copied: ${outputArticleDir.resolve(imageFile.fileName)}")
-      }
-  }
 
   private fun generateStaticPage(
     templatePath: Path,
@@ -169,8 +135,7 @@ class Generator {
         "theme_toggle" to SiteConfig.themeToggleHtml,
       )
     val html = TemplateEngine.render(templatePath, variables)
-    outputPath.writeText(html)
-    println("Generated: $outputPath")
+    if (OutputWriter.writeIfChanged(outputPath, html)) println("Generated: $outputPath")
   }
 
   private fun formatDateForDisplay(dateString: String): String {

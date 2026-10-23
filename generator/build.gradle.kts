@@ -13,6 +13,8 @@ dependencies {
     implementation(libs.commonmark.ext.gfm.strikethrough)
     implementation(libs.commonmark.ext.autolink)
     implementation(libs.snakeyaml.engine)
+
+    testImplementation(kotlin("test-junit5"))
 }
 
 application {
@@ -29,4 +31,8 @@ tasks.register<JavaExec>("feed") {
     mainClass.set("blog.FeedGenerator")
     classpath = sourceSets["main"].runtimeClasspath
     workingDir = rootProject.projectDir
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
