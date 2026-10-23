@@ -10,6 +10,7 @@ make build-worker    # Build the Cloudflare Worker
 make deploy          # generate + build-worker + cf deploy
 make today           # Create articles/YYYY/MM/DD/index.md (requires the kotlin CLI)
 ./gradlew :generator:feed  # Generate RSS feed (feed.xml)
+./gradlew :generator:test  # Run generator unit tests
 ```
 
 ## Architecture
@@ -21,8 +22,8 @@ JVM application that converts Markdown articles to HTML.
 - Entry point: `blog.MainKt`
 - Markdown parsing: Commonmark with GFM extensions (tables, strikethrough, autolink)
 - Embed transformers: X/Twitter, Gist, YouTube, Spotify, ImageCaption
-- Copies `assets/` to `output/assets/` on every run
-- Outputs to `output/`
+- Outputs to `output/`, writing a generated file only when its content differs from what is on disk (`OutputWriter`)
+- Syncs `assets/` to `output/assets/` and article images to `output/`, copying only missing or stale files (`StaticFileSyncer`)
 
 ### worker (`:worker`)
 
@@ -38,7 +39,7 @@ Kotlin/JS Cloudflare Worker.
 | Path | Contents |
 | --- | --- |
 | `articles/YYYY/MM/DD/index.md` | Articles with YAML frontmatter |
-| `templates/` | `article.html`, `index.html`, `404.html`, `articles.md` |
+| `templates/` | `article.html`, `index.html`, `404.html`, `article.md` |
 | `assets/` | CSS, JS, icons (no template placeholders, copied verbatim) |
 | `output/` | Fully generated, not committed |
 
