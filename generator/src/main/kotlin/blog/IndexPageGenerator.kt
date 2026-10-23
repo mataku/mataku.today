@@ -29,11 +29,9 @@ object IndexPageGenerator {
       return
     }
 
-    val isDev = System.getenv("DEV") == "1"
     val totalPages = (articles.size + ARTICLES_PER_PAGE - 1) / ARTICLES_PER_PAGE
-    val pagesToGenerate = if (isDev) 1 else totalPages
 
-    for (pageNum in 1..pagesToGenerate) {
+    for (pageNum in 1..totalPages) {
       val startIndex = (pageNum - 1) * ARTICLES_PER_PAGE
       val endIndex = minOf(startIndex + ARTICLES_PER_PAGE, articles.size)
       val pageArticles = articles.subList(startIndex, endIndex)
