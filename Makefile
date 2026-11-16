@@ -7,7 +7,7 @@ generate:
 	./gradlew :generator:run --no-daemon -q
 
 today:
-	kotlin scripts/new-article.main.kts
+	./gradlew :generator:new --no-daemon -q
 
 deploy: generate build-worker
 	npx cf deploy

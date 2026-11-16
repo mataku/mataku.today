@@ -8,7 +8,7 @@ Personal blog built with Kotlin: a static site generator (JVM) and a Cloudflare 
 make generate        # Generate static HTML from markdown articles into output/
 make build-worker    # Build the Cloudflare Worker
 make deploy          # generate + build-worker + cf deploy
-make today           # Create articles/YYYY/MM/DD/index.md (requires the kotlin CLI)
+make today           # Create articles/YYYY/MM/DD/index.md
 ./gradlew :generator:feed  # Generate RSS feed (feed.xml)
 ./gradlew :generator:test  # Run generator unit tests
 ```
