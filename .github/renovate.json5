@@ -20,8 +20,14 @@
       "platformAutomerge": true
     },
     {
-      "matchManagers": ["gradle", "npm"],
-      "groupName": "dependencies",
+      "matchManagers": ["gradle"],
+      "groupName": "gradle dependencies",
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "matchManagers": ["npm"],
+      "groupName": "npm dependencies",
       "automerge": true,
       "platformAutomerge": true
     },
