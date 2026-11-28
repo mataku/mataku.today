@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-BUNDLE_DIR=".cloudflare/output/v0/workers/default/bundle"
+BUNDLE_DIR=".cloudflare/output/v1/workers/default/bundle"
 ASSETS_DIR="output"
 BASELINE="bundle-baseline.txt"
 METRICS="bundle-metrics.txt"
